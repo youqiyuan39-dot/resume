@@ -3,174 +3,383 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>袁有祺 · AI Agent 开发实习 · 简历</title>
-  <meta name="description" content="袁有祺的网页版简历。湖南工商大学人工智能专业，求职 AI Agent 开发实习；独立推进美客多商品上架 Agent「悠悠」，建立 31 项回归验收。">
+  <title>袁有祺｜AI Agent 开发实习｜个人网站</title>
+  <meta name="description" content="袁有祺的个人网站。人工智能专业大三，求职 AI Agent 开发实习；做过在上家公司实际使用的美客多商品上架 Agent「悠悠」。">
+  <meta name="color-scheme" content="light">
   <link rel="icon" href="data:,">
+  <link rel="preload" href="fonts/sans-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
-  <div class="ambient" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="logo" href="#main">袁有祺 <span class="mono">/ Resume</span></a>
-      <nav aria-label="简历目录">
-        <a href="#strengths">优势</a>
-        <a href="#experience">实习</a>
-        <a href="#projects">项目</a>
-        <a href="#skills">技能</a>
-        <a href="#education">教育</a>
-        <a href="#contact">联系</a>
-      </nav>
-    </div>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="主导航">
+      <a class="logo" href="#top" aria-label="回到顶部"><span>袁</span></a>
+      <div class="nav-links">
+        <a href="#top">首页</a>
+        <a href="#about">关于我</a>
+        <a href="#works">精选作品</a>
+        <a href="#experience">工作经验</a>
+      </div>
+      <a class="nav-cta" href="#contact">联系我</a>
+    </nav>
   </header>
 
   <main id="main">
-    <section class="hero wrap reveal">
-      <div class="hero-photo-wrap">
-        <img class="hero-photo" src="assets/photo.jpg" width="240" height="240" alt="袁有祺的证件照">
+    <!-- Hero -->
+    <section class="hero container" id="top" aria-labelledby="hero-h">
+      <div class="hero-text">
+        <h1 id="hero-h"><span class="nw">你好，我是 <span class="hl hl-sky">袁有祺</span>，</span><span class="nw">正在找</span> <span class="hl hl-navy">AI Agent 开发实习</span></h1>
+        <p class="hero-tags">人工智能专业大三 · 悠悠 Agent 核心开发者 · 长沙 · 可实习 6 个月</p>
+        <p class="hero-desc">做过一个在上家公司实际使用的美客多上架 Agent：证据不全就自动隔离，发布结果以平台回查为准。往下看，它会自己跑一遍。</p>
+        <div class="hero-btns">
+          <a class="btn btn-navy" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>联系我</a>
+          <a class="btn btn-line" href="#works">查看作品</a>
+        </div>
       </div>
-      <div class="hero-body">
-        <h1>袁有祺</h1>
-        <p class="role">AI Agent 开发实习</p>
-        <p class="pitch">独立推进美客多商品上架 Agent「悠悠」，打通采集、AI 出方案、规则门禁、人工审核全链路，已在公司内部使用。</p>
-        <ul class="meta">
-          <li>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5h2v14H4zm4-8h12v2H8V11zm0-5h12v2H8V6zm0 10h8v2H8v-2z"/></svg>
-            湖南工商大学 · 人工智能 / 大三 · 预计 2028 毕业
-          </li>
-          <li>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7zm0 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
-            长沙 · 可实习 6 个月，每周 5 天
-          </li>
+      <div class="hero-card">
+        <div class="hero-card-in">
+          <img src="assets/portrait.webp" width="600" height="800" alt="袁有祺的照片">
+        </div>
+        <p class="sticker" aria-hidden="true">上家公司在用</p>
+      </div>
+    </section>
+
+    <!-- Marquee band -->
+    <div class="band-wrap" aria-hidden="true"><div class="band">
+      <div class="band-track">
+        <span>Python</span><i></i><span>大模型 API</span><i></i><span>JSON 结构化输出</span><i></i><span>本地模型 + RAG</span><i></i><span>Chrome 扩展采集</span><i></i><span>Mercado Libre API</span><i></i><span>状态机协调器</span><i></i><span>回归测试</span><i></i>
+        <span>Python</span><i></i><span>大模型 API</span><i></i><span>JSON 结构化输出</span><i></i><span>本地模型 + RAG</span><i></i><span>Chrome 扩展采集</span><i></i><span>Mercado Libre API</span><i></i><span>状态机协调器</span><i></i><span>回归测试</span><i></i>
+      </div>
+    </div></div>
+
+    <!-- Services -->
+    <section class="services" aria-labelledby="svc-h">
+      <div class="container">
+        <header class="sec-head">
+          <h2 id="svc-h">我能做的 <span class="hl hl-coral">事情</span></h2>
+          <p>每一项都在悠悠里真实做过，下面的作品区能看到对应的东西。</p>
+        </header>
+        <div class="svc-grid">
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="8" width="12" height="10" rx="2"/><rect x="31" y="8" width="12" height="10" rx="2"/><rect x="18" y="30" width="12" height="10" rx="2"/><path d="M17 13h14M11 18v6h13v6M37 18v6H24"/></svg></div>
+            <h3>Agent 工作流设计</h3>
+            <p>把上架拆成证据、处理、校验、冻结、发布、回查六个阶段，每步可恢复、可追溯。</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sun-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 9c-5 0-5 3-5 7s-4 8-4 8 4 4 4 8 0 7 5 7M31 9c5 0 5 3 5 7s4 8 4 8-4 4-4 8 0 7-5 7"/><path d="M20 20h8M20 28h5"/></svg></div>
+            <h3>Prompt 与结构化输出</h3>
+            <p>系统提示词、Few-shot 和 JSON 结构化输出；模型只做提议，不确定就停下。</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--coral-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 9 11v11c0 10 7 17 15 21 8-4 15-11 15-21V11Z"/><path d="m17 24 5 5 9-10"/></svg></div>
+            <h3>规则校验与测试</h3>
+            <p>把运营经验写成类目守卫、型号规则、必填检查；建立 31 项回归验收用例。</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--violet-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v13c0 3 6 5 14 5s14-2 14-5V11M10 24v13c0 3 6 5 14 5s14-2 14-5V24"/></svg></div>
+            <h3>数据采集与清洗</h3>
+            <p>Chrome 扩展采集货源与平台数据，绑定原件 hash、SKU、图片和包装信息。</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="28" rx="3"/><path d="M6 15h36M14 22h12M14 28h8M31 22h5v6h-5z"/><path d="M18 42h12"/></svg></div>
+            <h3>审核工作台</h3>
+            <p>维护两套 Web 审核工作台：缺什么、为什么停、下一步做什么，一眼看清。</p>
+          </article>
+          <article class="svc svc-cta">
+            <svg class="svc-cta-ic" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="4"/><path d="m6 14 18 12 18-12"/></svg>
+            <h3>想聊具体项目？</h3>
+            <p>源码在 GitHub 公开，面试时可以现场讲任何一个模块的取舍。</p>
+            <a class="btn btn-white" href="#contact">联系我</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about container" id="about" aria-labelledby="about-h">
+      <div class="about-art">
+        <img src="assets/portrait.webp" width="600" height="800" alt="" loading="lazy">
+      </div>
+      <div class="about-text">
+        <h2 id="about-h">关于 <span class="hl hl-sky">袁有祺</span></h2>
+        <p>湖南工商大学人工智能专业大三，专业排名前 5%。在伙麦跨境电商实习时，从需求分析、流程设计到开发，做了美客多商品上架 Agent「悠悠」，现在公司内部在用。我相信 Agent 的价值不在模型说了什么，而在每一步都有证据、有规则、能回查。</p>
+        <ul class="about-list">
+          <li><span class="dot" style="--c: var(--navy)"></span><div><b>AI Agent 开发</b>Python、大模型 API、结构化输出、状态机协调器、单元与回归测试。</div></li>
+          <li><span class="dot" style="--c: var(--coral)"></span><div><b>懂业务</b>TikTok Shop 与美客多运营、选品调研、Listing 优化，知道规则从哪来。</div></li>
+          <li><span class="dot" style="--c: var(--sky)"></span><div><b>AI 内容生产</b>万圣节扫帚挂车 AI 视频（脚本、分镜、Seedance 生成与剪辑），关联商品周成交 357 件。</div></li>
         </ul>
-        <div class="hero-actions">
-          <a class="btn btn-solid" href="#contact">联系我</a>
-          <a class="btn btn-ghost" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">GitHub</a>
-          <span class="contact-ph">手机 [待填写] · 邮箱 [待填写]</span>
-        </div>
+        <a class="btn btn-navy" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">看 GitHub 源码</a>
       </div>
     </section>
 
-    <section id="strengths" class="section wrap reveal">
-      <h2>个人优势</h2>
-      <div class="strength-grid">
-        <article class="strength">
-          <p class="metric mono">前 5%</p>
-          <p>人工智能专业本科，专业排名前 5%。曾任 AI Agent 开发工程师（实习），独立推进「悠悠」全链路，已在公司内部使用。</p>
-        </article>
-        <article class="strength">
-          <p class="metric mono">31 项</p>
-          <p>熟悉 Python、大模型 API、Prompt 工程与 JSON 结构化输出，用规则校验约束模型误判，建立 31 项回归验收；熟练使用 Codex、Cursor。</p>
-        </article>
-        <article class="strength">
-          <p class="metric mono">5 万+ / 88.7%</p>
-          <p>懂电商业务，能把运营规则转成 Agent 约束；内容运营单条视频播放 5 万+、完播率 88.7%。</p>
-        </article>
-      </div>
-      <p class="intent"><strong>求职意向</strong> AI Agent 开发实习 / AI 应用开发实习｜长沙｜每周 5 天，可实习 6 个月</p>
-    </section>
+    <!-- Works -->
+    <section class="works container" id="works" aria-labelledby="works-h">
+      <header class="sec-head">
+        <h2 id="works-h">精选 <span class="hl hl-coral">作品</span></h2>
+        <p>同一个项目的四个切面：它怎么跑、怎么判错、怎么算钱、真实界面长什么样。</p>
+      </header>
 
-    <section id="experience" class="section wrap reveal">
-      <h2>实习经历</h2>
-      <div class="entry">
-        <div class="entry-head">
-          <h3>伙麦跨境电商公司<span class="sep">｜</span>AI Agent 开发工程师（实习）</h3>
-          <p class="date mono">2026.06 – 2026.10</p>
+      <!-- Work 1: departure board -->
+      <article class="work work-wide">
+        <div class="work-text">
+          <p class="chip">悠悠 Agent · 无人值守上架</p>
+          <h3>5 件商品，没有人工点击，自己跑完</h3>
+          <p>按 GitHub 源码 autonomous_flow_v3 的六阶段串行协调器复现：证据不全的隔离并写明缺什么，发布结果未知就回查、绝不重发，拿到平台回执才算完成。点任一行看它的运行日志。</p>
+          <ul class="proof">
+            <li><b>约 60%</b><span>上架效率提升<small>口径待补</small></span></li>
+            <li><b>6</b><span>闭环阶段</span></li>
+            <li><b>980</b><span>仓库测试用例</span></li>
+          </ul>
         </div>
-        <ul class="bullets">
-          <li>负责美客多商品上架 Agent「悠悠」需求分析与流程设计，将人工上架拆为数据采集、AI 生成方案、规则门禁、人工审核四步，打通完整链路。</li>
-          <li>设计系统提示词，用 JSON 结构化输出约束模型返回类目、属性、标题，输出可直接被程序解析与校验。</li>
-          <li>将运营经验写成校验规则（型号规则、必填属性检查），信息不全的商品自动停在待补信息，防止错误数据上架。</li>
-          <li>定位手持链锯被误归为锯片配件的问题，V6 修正为手锯并补型号规则，同类误判不再出现。</li>
-          <li>建立 31 项回归验收用例，另有 16 项、47 项两组专项测试，每次迭代全跑，防止旧问题回退。</li>
-          <li>维护两套 Web 审核工作台，发布前必须人工确认，每条结果可追溯。</li>
-          <li>参与 TikTok Shop 选品调研、竞品分析与 Listing 优化；独立完成万圣节扫帚挂车 AI 视频（脚本、分镜、Seedance 生成与剪辑），关联商品周成交 357 件。</li>
-        </ul>
-      </div>
-    </section>
+        <div class="work-panel panel-navy">
+          <div class="board" id="board">
+            <div class="board-head">
+              <p class="board-title">出港牌<span>演示批次 · 示例数据</span></p>
+              <div class="board-ctl">
+                <button type="button" class="ctl" id="b-pause" aria-pressed="false">暂停</button>
+                <button type="button" class="ctl" id="b-rerun">重新运行</button>
+                <label class="ctl ctl-check"><input type="checkbox" id="b-fault" checked>注入故障</label>
+              </div>
+            </div>
+            <div class="board-cols" aria-hidden="true"><span>编号</span><span>商品</span><span>六阶段</span><span>状态</span><span>最近一步</span></div>
+            <ol class="rows" id="rows" aria-label="商品队列，点击任一行看它的运行日志"></ol>
+            <div class="board-foot">
+              <dl class="tally">
+                <div><dt>已上架</dt><dd id="t-done">0</dd></div>
+                <div><dt>自动隔离</dt><dd id="t-quar">0</dd></div>
+                <div><dt>回查避免重发</dt><dd id="t-recon">0</dd></div>
+                <div><dt>人工点击</dt><dd id="t-human">0</dd></div>
+              </dl>
+              <p class="verdict" id="verdict" aria-live="polite"></p>
+            </div>
+          </div>
+          <ol class="stages" aria-label="六个阶段与源码规则">
+            <li><b>证据</b><code>EVIDENCE_MISSING</code><span>缺一项就隔离，不让模型猜</span></li>
+            <li><b>处理</b><code>max_attempts = 3</code><span>限流、超时按退避重试</span></li>
+            <li><b>校验</b><code>confidence ≥ 0.75</code><span>利润严格大于 10%</span></li>
+            <li><b>冻结</b><code>sha256(draft, source, target)</code><span>同一草稿不会生成两份</span></li>
+            <li><b>发布</b><code>outcome = unknown</code><span>先落盘，出错只回查不重发</span></li>
+            <li><b>回查</b><code>LIVE_RECEIPT_MISSING</code><span>拿到 item_id 且在线才完成</span></li>
+          </ol>
+        </div>
+      </article>
 
-    <section id="projects" class="section wrap reveal">
-      <h2>项目经历</h2>
+      <!-- Work 2: chainsaw case -->
+      <article class="work">
+        <div class="work-text">
+          <p class="chip chip-sky">类目守卫</p>
+          <h3>链锯被判成锯片配件之后</h3>
+          <p>模型把手持链锯归成了锯片配件。V6 修正为手锯并补上型号规则，后来把“类目与商品类型冲突”的检查做成独立的类目守卫模块，同类误判不再出现。悬停或点击截图上的数字看说明。</p>
+          <ol class="notes">
+            <li id="note-1"><b>必填检查</b>必填属性 7/7 齐全才放行，缺一项就停在待补信息。</li>
+            <li id="note-2"><b>类目路径</b>纠正后：工具 &gt; 手工具 &gt; 锯。</li>
+            <li id="note-3"><b>型号规则</b>型号只用有来源的厂家信息，不能把规格数字当型号。</li>
+          </ol>
+        </div>
+        <div class="work-panel panel-sky">
+          <div class="shot-wrap">
+            <button type="button" class="shot-btn" data-lightbox="assets/workbench-model-rule.png" data-w="1879" data-h="921" aria-label="放大查看：链锯案例修复后的工作台">
+              <img src="assets/workbench-model-rule.png" width="1879" height="921" loading="lazy" alt="工作台截图：手锯商品的类目路径、型号与必填属性">
+            </button>
+            <button type="button" class="pin" style="--x:18.9%;--y:43.9%" aria-describedby="note-1">1</button>
+            <button type="button" class="pin" style="--x:35.4%;--y:38.7%" aria-describedby="note-2">2</button>
+            <button type="button" class="pin" style="--x:51.4%;--y:56.3%" aria-describedby="note-3">3</button>
+          </div>
+        </div>
+      </article>
 
-      <article class="project">
-        <div class="entry-head">
-          <h3>悠悠 · 美客多商品上架 AI Agent</h3>
-          <p class="date mono">核心开发者 · 2026.06 – 2026.10</p>
+      <!-- Work 3: profit gate -->
+      <article class="work" id="gate">
+        <div class="work-text">
+          <p class="chip chip-sun">利润门</p>
+          <h3>差一点也不放行</h3>
+          <p>出港牌上的<b>园艺修枝剪</b>按市场价 ¥83 算出利润率 9.6%，被隔离。拖动售价看它什么时候能放行。规则：贡献利润 ÷ 买家售价，<b>严格大于</b> 10%，不自动抬价。</p>
+          <div class="mini-board" aria-hidden="true">
+            <span class="mb-name">园艺修枝剪</span>
+            <span class="mb-pct" id="mb-pct">9.6%</span>
+            <span class="mb-flaps" id="mb-flaps"><span class="cell"> </span><span class="cell"> </span><span class="cell"> </span></span>
+          </div>
+          <label class="gate-slider" for="g-price">市场售价 <output id="g-price-out" for="g-price">¥ 83</output></label>
+          <input type="range" id="g-price" min="70" max="120" step="1" value="83">
+          <p class="gate-result" id="g-result" aria-live="polite"></p>
         </div>
-        <p class="lede">架构按「采集 → AI 方案 → 规则门禁 → 人工审核」四步编排；「AI 提议 → 规则门禁 → 人工审核」三层设计，可审核、可追溯、可回滚。</p>
-        <ol class="steps">
-          <li><span class="mono">01</span> 数据采集</li>
-          <li><span class="mono">02</span> AI 生成方案</li>
-          <li><span class="mono">03</span> 规则门禁</li>
-          <li><span class="mono">04</span> 人工审核（发布前必须人工确认）</li>
-        </ol>
-        <div class="case">
-          <h4>工程案例</h4>
-          <p>手持链锯被误归为锯片配件 → V6 修正为手锯并补型号规则 → 同类误判不再出现。模型易误判类目与属性时，用 Prompt 约束 + 规则二次校验 + 不确定即停下三重机制压低误判。</p>
+        <div class="work-panel panel-sun">
+          <dl class="ledger" id="g-table"></dl>
+          <p class="gate-note">公式来自源码 market_follow_v3.py：广告、税费各按净回款 5%，退货按变动成本 3%，包材 ¥0.6。平台费、采购、运费是示例值，统一按人民币算；真实系统按美元售价和汇率换算。</p>
         </div>
-        <figure class="shot">
-          <button type="button" class="shot-btn" data-lightbox="assets/workbench-model-rule.png" aria-label="放大查看工作台截图">
-            <img src="assets/workbench-model-rule.png" width="960" height="540" alt="悠悠审核工作台真实截图：型号规则与人工确认界面">
+      </article>
+
+      <!-- Work 4: real screens -->
+      <article class="work work-gallery">
+        <div class="work-text">
+          <p class="chip chip-coral">真实界面</p>
+          <h3>工作台真实截图，不是示意图</h3>
+          <p>核查 Agent 按工具反馈逐轮读取 SKU、包装、图片来源和官方类目，到上限就停下标明未完成；定价只写入本机，未确认同款不据此降价；队列里失败和缺资料的商品各自写明原因，其余照常处理。店铺编号已打码。</p>
+        </div>
+        <div class="work-panel panel-violet gallery">
+          <button type="button" class="shot-btn g-tall" data-lightbox="assets/agent-loop.jpg" data-w="840" data-h="862" aria-label="放大查看：自主核查商品资料">
+            <img src="assets/agent-loop.jpg" width="840" height="862" loading="lazy" alt="工作台截图：自主核查商品资料，模型按工具反馈逐轮读取 SKU、包装、图片来源和官方类目">
           </button>
-          <figcaption>真实工作台截图 · 点击放大</figcaption>
-        </figure>
-        <p class="repo"><a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">github.com/youqiyuan39-dot/youyou-mercadolibre-agent</a></p>
-      </article>
-
-      <article class="project">
-        <div class="entry-head">
-          <h3>政府公众号内容运营与短视频制作</h3>
-          <p class="date mono">2025.07 – 2025.09</p>
+          <button type="button" class="shot-btn" data-lightbox="assets/pricing.jpg" data-w="1378" data-h="772" aria-label="放大查看：自主定价">
+            <img src="assets/pricing.jpg" width="1378" height="772" loading="lazy" alt="工作台截图：自主定价，按 SKU 成本、货代计费和市场报价生成净回款方案">
+          </button>
+          <button type="button" class="shot-btn" data-lightbox="assets/queue.jpg" data-w="1650" data-h="830" aria-label="放大查看：商品处理队列">
+            <img src="assets/queue.jpg" width="1650" height="830" loading="lazy" alt="工作台截图：商品处理队列，AI 失败和缺资料的商品各自标明原因与下一步">
+          </button>
         </div>
-        <ul class="bullets">
-          <li>单条视频播放 5 万+、完播率 88.7%、文案完读率 74.69%。</li>
-          <li>用 ChatGPT/DeepSeek 辅助检索与脚本初稿，人工改写校对。</li>
-        </ul>
       </article>
     </section>
 
-    <section id="skills" class="section wrap reveal">
-      <h2>专业技能</h2>
-      <dl class="skills">
-        <div><dt>编程</dt><dd>熟悉 Python（requests、pandas、JSON、正则）；了解 JavaScript、HTML/CSS、SQL。</dd></div>
-        <div><dt>大模型与 Agent</dt><dd>熟悉 OpenAI/DeepSeek API、结构化输出、Function Calling、Prompt 工程（系统提示词、Few-shot、防幻觉约束）、Agent 工作流与 Human-in-the-loop；了解 ReAct、LangChain/LangGraph、Dify/Coze、RAG（Embedding、FAISS/Chroma）、MCP。</dd></div>
-        <div><dt>工程</dt><dd>RESTful API 调试、了解 FastAPI/Flask、数据采集清洗、回归测试与验收、Git/GitHub、PowerShell、VS Code；了解 Docker、Linux。</dd></div>
-        <div><dt>AI 工具</dt><dd>Codex、Cursor、ChatGPT、DeepSeek。</dd></div>
-        <div><dt>语言</dt><dd>英语四级，可读英文 API 文档。</dd></div>
-        <div><dt>业务</dt><dd>TikTok Shop/美客多运营框架、竞品调研、Listing 优化、Excel 报表。</dd></div>
-      </dl>
-    </section>
-
-    <section id="education" class="section wrap reveal">
-      <h2>教育经历</h2>
-      <div class="entry-head">
-        <h3>湖南工商大学<span class="sep">｜</span>人工智能专业<span class="sep">｜</span>本科在读</h3>
-        <p class="date mono">预计 2028 年毕业</p>
+    <!-- Experience -->
+    <section class="exp" id="experience" aria-labelledby="exp-h">
+      <div class="container exp-in">
+        <div class="exp-head">
+          <h2 id="exp-h">工作 <span class="hl hl-sky">经验</span></h2>
+          <p>从内容运营到 AI Agent 开发，一直在做同一件事：让工具真的替人省下时间。</p>
+          <a class="btn btn-white" href="#contact">联系我</a>
+        </div>
+        <ol class="timeline">
+          <li class="tl">
+            <p class="tl-date">2026.06 – 2026.10</p>
+            <h3>AI Agent 开发工程师（实习）<span>伙麦跨境电商公司</span></h3>
+            <p>负责悠悠从需求分析、流程设计到开发：设计系统提示词与 JSON 结构化输出，把运营经验写成校验规则，建立 31 项回归验收用例及 16 项、47 项专项测试，维护两套 Web 审核工作台。参与 TikTok Shop 选品调研与 Listing 优化。</p>
+            <span class="tl-ic" style="--c: var(--sky)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></span>
+          </li>
+          <li class="tl">
+            <p class="tl-date">2025.07 – 2025.09</p>
+            <h3>内容运营与短视频制作<span>政府公众号</span></h3>
+            <p>单条视频播放 5 万+、完播率 88.7%、文案完读率 74.69%；用 ChatGPT/DeepSeek 辅助检索与脚本初稿，人工改写校对。</p>
+            <span class="tl-ic" style="--c: var(--coral)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg></span>
+          </li>
+          <li class="tl">
+            <p class="tl-date">在读 · 预计 2028 年毕业</p>
+            <h3>人工智能专业 本科<span>湖南工商大学</span></h3>
+            <p>专业排名前 5%，英语四级，可读英文 API 文档。可实习 6 个月，每周 5 天。</p>
+            <span class="tl-ic" style="--c: var(--sun)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>
+          </li>
+        </ol>
       </div>
-      <p class="edu-note">专业排名前 5% · 英语四级</p>
     </section>
 
-    <section id="contact" class="section wrap reveal contact">
-      <h2>联系方式</h2>
-      <ul class="contact-list">
-        <li>手机 <span class="ph">[待填写]</span></li>
-        <li>邮箱 <span class="ph">[待填写]</span></li>
-        <li>城市 长沙</li>
-        <li><a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">GitHub · youqiyuan39-dot/youyou-mercadolibre-agent</a></li>
-      </ul>
+    <!-- Status (instead of testimonials: no invented quotes) -->
+    <section class="status container" aria-labelledby="status-h">
+      <header class="sec-head">
+        <h2 id="status-h">测试与 <span class="hl hl-sky">现状</span></h2>
+        <p>能做到什么、还没做到什么，都按仓库里的事实写。</p>
+      </header>
+      <div class="status-card">
+        <div class="status-text">
+          <p><b>测试</b>仓库共 980 项 Python 测试用例。2026-10-25 在 Linux 环境实跑：956 项通过，7 项因缺私有原件跳过，17 项报错；抽查的报错来自 Windows 专用的本机加密配置，Linux 下无法保存。</p>
+          <p><b>当前状态</b>闭环代码、隔离与回查逻辑已实现并有测试覆盖；真实店铺的无人值守上架仍在验收中，以 GitHub README 为准。</p>
+        </div>
+        <div class="status-badge" aria-hidden="true"><b>956</b><span>/ 980 通过</span></div>
+      </div>
+    </section>
+
+    <!-- Skills (instead of articles) -->
+    <section class="skills container" aria-labelledby="skills-h">
+      <header class="sec-head sec-head-row">
+        <h2 id="skills-h">专业 <span class="hl hl-coral">技能</span></h2>
+      </header>
+      <div class="skill-grid">
+        <article class="skill skill-big">
+          <p class="chip">大模型与 Agent</p>
+          <p>熟悉 OpenAI/DeepSeek API、结构化输出、Function Calling、Prompt 工程（系统提示词、Few-shot、防幻觉约束）、Agent 工作流与 Human-in-the-loop；了解 ReAct、LangChain/LangGraph、Dify/Coze、RAG（Embedding、FAISS/Chroma）、MCP。</p>
+        </article>
+        <article class="skill">
+          <p class="chip chip-sky">编程与工程</p>
+          <p>熟悉 Python（requests、pandas、JSON、正则）；了解 JavaScript、HTML/CSS、SQL。RESTful API 调试、FastAPI/Flask、数据采集清洗、Git/GitHub、PowerShell；了解 Docker、Linux。</p>
+        </article>
+        <article class="skill">
+          <p class="chip chip-sun">工具与业务</p>
+          <p>Codex、Cursor、ChatGPT、DeepSeek。TikTok Shop/美客多运营框架、竞品调研、Listing 优化、Excel 报表。</p>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer class="site-foot wrap">
-    <p>© 2026 袁有祺 · 网页版简历 V7</p>
+  <!-- Footer / contact -->
+  <footer class="foot" id="contact">
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-me">
+          <span class="foot-ava"><img src="assets/portrait.webp" width="600" height="800" alt="" loading="lazy"></span>
+          <div><h2>想聊聊？</h2><p>实习、项目细节、源码里的任何一个取舍都可以。</p></div>
+        </div>
+        <div class="foot-cta">
+          <a class="btn btn-white" href="tel:+8617773398713">177 7339 8713</a>
+          <a class="btn btn-sky" href="mailto:2992622682@qq.com">2992622682@qq.com</a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <p class="foot-name">袁有祺</p>
+          <p>人工智能专业大三 · AI Agent 开发实习求职中 · 长沙</p>
+        </div>
+        <div>
+          <h3>快速链接</h3>
+          <a href="#top">首页</a><a href="#about">关于我</a><a href="#works">精选作品</a><a href="#experience">工作经验</a>
+        </div>
+        <div>
+          <h3>联系方式</h3>
+          <a href="tel:+8617773398713">手机 177 7339 8713</a>
+          <a href="mailto:2992622682@qq.com">邮箱 2992622682@qq.com</a>
+          <a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">GitHub youqiyuan39-dot</a>
+        </div>
+      </div>
+      <p class="foot-copy">© 2026 袁有祺 · 版式参考 Paperfolio 模板思路，内容与代码为本人项目</p>
+    </div>
   </footer>
 
-  <div id="lightbox" class="lightbox" hidden>
-    <button type="button" class="lightbox-close" aria-label="关闭">关闭</button>
-    <img src="assets/workbench-model-rule.png" alt="放大后的工作台截图" data-role="lightbox-img">
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="放大的截图" hidden>
+    <button type="button" class="lightbox-close">关闭</button>
+    <div class="lightbox-stage" tabindex="0" aria-label="截图区域，可滚动查看">
+      <img src="assets/workbench-model-rule.png" alt="放大后的截图" width="1879" height="921" data-role="lightbox-img">
+    </div>
   </div>
+
+  <script type="application/json" id="sim-data">
+[
+  {"id": "saw", "code": "Y01", "name": "手持链锯", "meta": "1 个 SKU", "steps": [
+    {"s": "evidence", "o": "passed", "t": "原件 hash 一致；采购 SKU、规格、图片、包装已绑定"},
+    {"s": "process", "o": "passed", "t": "AI 结构化输出：类目 = 锯片配件（待校验）"},
+    {"s": "validate", "o": "fix", "t": "类目守卫：整机工具不能归为锯片配件，改为 手工具 > 锯"},
+    {"s": "validate", "o": "passed", "t": "同款置信度 0.81 ≥ 0.75；利润率 12.6% > 10%"},
+    {"s": "prepare", "o": "passed", "t": "冻结发布计划：草稿、图片、费用证明 hash 锁定"},
+    {"s": "publish", "o": "passed", "t": "先落盘 dispatching，再提交，平台已受理"},
+    {"s": "reconcile", "o": "passed", "t": "回读 MLM-DEMO-01：active，规格与价格一致"}
+  ], "end": "done"},
+  {"id": "cup", "code": "Y02", "name": "硅胶折叠水杯", "meta": "3 个 SKU", "steps": [
+    {"s": "evidence", "o": "passed", "t": "原件 hash 一致；3 个 SKU 各自绑定图片与价格"},
+    {"s": "process", "o": "retry", "fault": true, "t": "模型服务限流 429，退避 20 秒重试（第 1/3 次）"},
+    {"s": "process", "o": "passed", "t": "AI 结构化输出：类目、属性、西语标题"},
+    {"s": "validate", "o": "passed", "t": "同款置信度 0.88；利润率 18.2% > 10%"},
+    {"s": "prepare", "o": "passed", "t": "冻结发布计划"},
+    {"s": "publish", "o": "passed", "t": "先落盘 dispatching，再提交，平台已受理"},
+    {"s": "reconcile", "o": "passed", "t": "回读 MLM-DEMO-02：3 个 SKU 均 active"}
+  ], "end": "done"},
+  {"id": "banner", "code": "Y03", "name": "节日门帘", "meta": "12 个 SKU", "steps": [
+    {"s": "evidence", "o": "blocked", "t": "缺包装重量与三边尺寸：隔离 EVIDENCE_MISSING，队列继续"}
+  ], "end": "quar", "why": "缺包装重量、尺寸；新原件到达后才建恢复任务"},
+  {"id": "shears", "code": "Y04", "name": "园艺修枝剪", "meta": "2 个 SKU", "steps": [
+    {"s": "evidence", "o": "passed", "t": "原件 hash 一致；2 个 SKU 已绑定"},
+    {"s": "process", "o": "passed", "t": "AI 结构化输出：类目 = 修枝剪"},
+    {"s": "validate", "o": "blocked", "t": "市场价 ¥83，利润率 9.6% 未超过 10%：BELOW_FLOOR，不自动抬价"}
+  ], "end": "quar", "why": "利润率 9.6% 未过线；市场价或货源变化后重新核验"},
+  {"id": "box", "code": "Y05", "name": "桌面收纳盒", "meta": "1 个 SKU", "steps": [
+    {"s": "evidence", "o": "passed", "t": "原件 hash 一致；SKU、图片、包装已绑定"},
+    {"s": "process", "o": "passed", "t": "AI 结构化输出：类目、属性、标题"},
+    {"s": "validate", "o": "passed", "t": "同款置信度 0.79；利润率 14.1% > 10%"},
+    {"s": "prepare", "o": "passed", "t": "冻结发布计划"},
+    {"s": "publish", "o": "unknown", "fault": true, "t": "提交超时，结果未知：不重发，转入回查"},
+    {"s": "publish", "o": "passed", "nofault": true, "t": "先落盘 dispatching，再提交，平台已受理"},
+    {"s": "reconcile", "o": "passed", "t": "回读 MLM-DEMO-05：已创建且 active，不重复创建"}
+  ], "end": "done"}
+]
+  </script>
 </body>
 </html>
