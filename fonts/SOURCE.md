@@ -1,1 +1,2 @@
-Noto Sans SC OFL 1.1; static 400/500/600/700 from NotoSansSC-VF.ttf; subset to index.html chars. Rerun after copy edits.
+Noto Sans SC (github.com/google/fonts) and JetBrains Mono (github.com/JetBrains/JetBrainsMono): SIL Open Font License 1.1. Downloaded 2026-10-25.
+Static instances subset to index.html by make_fonts.py. Rerun after any copy edit.
