@@ -1,3 +1,4 @@
+/* V15: V14 + motion layer at the end of this file. */
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -274,4 +275,118 @@
       else if (!e.shiftKey && (document.activeElement === stage || !inside)) { e.preventDefault(); closeBtn.focus(); }
     }
   });
+})();
+
+/* ===== V15 motion layer =====
+   Progressive: without JS or with reduced motion, nothing is hidden and nothing moves. */
+(() => {
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer: fine)').matches;
+
+  /* Nav: active section + compact after scroll (works in every mode) */
+  const navWrap = document.querySelector('.nav-wrap');
+  const links = $$('.nav-links a');
+  const targets = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const onNav = () => {
+    navWrap && navWrap.classList.toggle('is-scrolled', scrollY > 40);
+    let cur = targets[0];
+    targets.forEach((t) => { if (t.getBoundingClientRect().top < innerHeight * 0.35) cur = t; });
+    links.forEach((a) => a.classList.toggle('is-active', document.querySelector(a.getAttribute('href')) === cur));
+  };
+  addEventListener('scroll', onNav, { passive: true }); onNav();
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+  const root = document.documentElement;
+  root.classList.add('motion');
+
+  /* Hero entrance */
+  $$('.hero-text > *').forEach((el, i) => el.style.setProperty('--i', i));
+  const heroHl = $$('.hero .hl');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    root.classList.add('loaded');
+    heroHl.forEach((el, i) => setTimeout(() => el.classList.add('in'), 450 + i * 380));
+  }));
+
+  /* Highlights outside the hero wipe in when seen */
+  const hlIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); hlIO.unobserve(e.target); } }), { threshold: 0.8 });
+  $$('.hl').filter((el) => !el.closest('.hero')).forEach((el) => hlIO.observe(el));
+
+  /* Cards and blocks land in, staggered per group */
+  const groups = [
+    ['.svc-grid', '.svc', true], ['.about', '.about-art, .about-text', false], ['.works', '.work', true],
+    ['.stages', 'li', false], ['.timeline', '.tl', true], ['.status', '.status-card', true],
+    ['.skill-grid', '.skill', true], ['.about-list', 'li', false], ['.foot', '.foot-top, .foot-cols', false],
+  ];
+  const rv = [];
+  groups.forEach(([g, item, card]) => $$(g).forEach((box) => $$(item, box).forEach((el, i) => {
+    el.classList.add('rv'); if (card) el.classList.add('rv-card'); el.style.setProperty('--i', i % 6); rv.push(el);
+  })));
+  const rvIO = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return; e.target.classList.add('in'); rvIO.unobserve(e.target);
+    setTimeout(() => e.target.style.removeProperty('--i'), 1600); // later hovers react instantly
+  }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  rv.forEach((el) => rvIO.observe(el));
+
+  /* Service icons draw themselves */
+  $$('.svc-art svg').forEach((svg) => $$('path, rect, ellipse, circle', svg).forEach((s) => {
+    try { const len = Math.ceil(s.getTotalLength()); s.style.setProperty('--len', len); s.classList.add('draw'); } catch (e) { /* not measurable */ }
+  }));
+
+  /* Count-up numbers */
+  const cIO = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return; cIO.unobserve(e.target);
+    const el = e.target; const to = Number(el.dataset.count); const pre = el.dataset.prefix || ''; const suf = el.dataset.suffix || '';
+    const t0 = performance.now(); const dur = 1200;
+    const tick = (now) => {
+      const k = Math.min(1, (now - t0) / dur); const v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+      el.textContent = pre + v + suf; if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }), { threshold: 0.6 });
+  $$('[data-count]').forEach((el) => cIO.observe(el));
+
+  /* Marquee band: base drift, scroll speeds it up and sets direction */
+  const track = document.querySelector('.band-track');
+  if (track) {
+    let x = 0; let dir = -1; let boost = 0; let lastY = scrollY; let visible = true; let half = track.scrollWidth / 2;
+    addEventListener('resize', () => { half = track.scrollWidth / 2; });
+    new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(track);
+    addEventListener('scroll', () => {
+      const dy = scrollY - lastY; lastY = scrollY;
+      if (dy) dir = dy > 0 ? -1 : 1;
+      boost = Math.min(18, boost + Math.abs(dy) * 0.08);
+    }, { passive: true });
+    const loop = () => {
+      if (visible) {
+        x += dir * (0.6 + boost); boost *= 0.92;
+        if (x <= -half) x += half; if (x > 0) x -= half;
+        track.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+      }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
+  /* Hero: portrait card tilts toward the pointer, doodles drift with depth */
+  const hero = document.querySelector('.hero'); const card = document.querySelector('.hero-card');
+  const dds = $$('.dd');
+  if (hero && card && fine) {
+    let raf = 0; let px = 0; let py = 0;
+    const apply = () => {
+      raf = 0;
+      card.style.setProperty('--ry', (px * 8).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', (-py * 8).toFixed(2) + 'deg');
+      dds.forEach((d) => {
+        const z = Number(getComputedStyle(d).getPropertyValue('--z')) || 1;
+        d.style.setProperty('--mx', (px * 18 * z).toFixed(1) + 'px'); d.style.setProperty('--my', (py * 18 * z).toFixed(1) + 'px');
+      });
+    };
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      px = (e.clientX - r.left) / r.width - 0.5; py = (e.clientY - r.top) / r.height - 0.5;
+      card.classList.add('tilting'); if (!raf) raf = requestAnimationFrame(apply);
+    });
+    hero.addEventListener('pointerleave', () => { px = 0; py = 0; card.classList.remove('tilting'); if (!raf) raf = requestAnimationFrame(apply); });
+  }
 })();

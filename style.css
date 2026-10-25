@@ -1,4 +1,5 @@
-/* V14 · Paperfolio 思路的新粗野风个人网站
+/* V15 · V14 + 动态特效（入场、滚动揭示、高亮擦入、图标描线、卡片落位、技术带随滚动加速、头像卡片跟随鼠标倾斜、数字滚动、导航高亮）
+   V14 · Paperfolio 思路的新粗野风个人网站
    参考 B 站「伽允啊」教程：找模板（Paperfolio）→ 定配色 → AI 定制 → 换图细修 → 上线
    深海军蓝描边 + 硬投影 + 色块高亮；出港牌、利润门、灯箱交互沿用 V13 */
 :root {
@@ -85,7 +86,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .nav-cta:hover { background: var(--sky); }
 
 /* Hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 40px clamp(32px, 5vw, 72px); align-items: center; padding-top: clamp(48px, 9vh, 96px); padding-bottom: clamp(56px, 10vh, 110px); }
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 40px clamp(32px, 5vw, 72px); align-items: center; padding-top: clamp(48px, 9vh, 96px); padding-bottom: clamp(56px, 10vh, 110px); }
 .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.9rem); line-height: 1.38; font-weight: 800; letter-spacing: 0.01em; }
 .hero h1 .nw { white-space: nowrap; }
 .hero h1 > .nw:first-child { display: block; }
@@ -401,4 +402,60 @@ html.lightbox-open { overflow: hidden; }
   .band-track { animation: none; }
   .cell > .f-leaf-top, .cell > .f-leaf-bot { animation: none; }
   .btn, .svc, .shot-btn img, .pin, .row { transition: none; }
+}
+
+/* ===== V15 motion layer ===== */
+.doodles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.hero > :not(.doodles) { position: relative; z-index: 1; }
+.dd { position: absolute; left: var(--l); top: var(--t); width: 34px; height: 34px; stroke: var(--navy); stroke-width: 2.5; transform: translate3d(var(--mx, 0px), var(--my, 0px), 0); }
+.dd-star { fill: var(--sun); width: 40px; height: 40px; }
+.dd-ring { stroke: var(--sky); stroke-width: 3; width: 30px; height: 30px; }
+.dd-plus { stroke: var(--coral); stroke-width: 3.5; }
+.dd-wave { stroke: var(--violet); stroke-width: 3; width: 56px; }
+.dd-tri { fill: var(--sky-soft); }
+
+/* Nav: active section + compact after scroll */
+.nav { transition: padding 0.3s var(--ease), max-width 0.3s var(--ease); }
+.nav-links a { position: relative; isolation: isolate; }
+.nav-links a::after { content: ""; position: absolute; left: -4px; right: -4px; bottom: -4px; height: 8px; background: var(--sky); opacity: 0.35; transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.35s var(--ease); z-index: -1; }
+.nav-links a.is-active::after { transform: scaleX(1); }
+.nav-wrap.is-scrolled .nav { padding-top: 6px; padding-bottom: 6px; }
+
+/* Everything below only when JS + motion are allowed */
+html.motion .hero-text > *, html.motion .hero-card { opacity: 0; transform: translateY(26px); }
+html.motion .hero-card { transform: translateY(-34px) rotate(5deg); }
+html.motion .sticker { opacity: 0; transform: rotate(-22deg) scale(1.7); }
+html.motion.loaded .hero-text > * { opacity: 1; transform: none; transition: opacity 0.7s var(--ease), transform 0.8s var(--ease); transition-delay: calc(var(--i, 0) * 110ms + 80ms); }
+html.motion.loaded .hero-card { opacity: 1; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: opacity 0.6s var(--ease) 0.25s, transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s; }
+html.motion.loaded .hero-card.tilting { transition: transform 0.12s linear; }
+html.motion.loaded .sticker { opacity: 1; transform: rotate(-6deg) scale(1); transition: opacity 0.2s 1s, transform 0.5s cubic-bezier(0.34, 1.8, 0.64, 1) 1s; }
+html.motion .dd { animation: bob 6s ease-in-out infinite; animation-delay: calc(var(--z) * -2s); }
+@keyframes bob { 50% { translate: 0 -10px; rotate: 12deg; } }
+
+/* Highlight blocks wipe in like a marker (block and text together) */
+html.motion .hl { clip-path: inset(-2px 100% -2px 0); transition: clip-path 0.75s cubic-bezier(0.65, 0, 0.35, 1); }
+html.motion .hl.in { clip-path: inset(-2px 0 -2px 0); }
+
+/* Cards land: pressed flat, then pop up into their hard shadow */
+html.motion .rv { opacity: 0; transform: translate(10px, 18px); }
+html.motion .rv.in { opacity: 1; transform: none; transition: opacity 0.55s var(--ease), transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1), box-shadow 0.25s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+html.motion .rv-card { box-shadow: 0 0 0 var(--navy); }
+html.motion .rv-card.in { box-shadow: var(--sh); }
+html.motion .tl.rv-card.in { box-shadow: 8px 8px 0 var(--sky); }
+html.motion .svc.rv.in:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--navy); transition-delay: 0s; }
+
+/* Icon line drawing */
+html.motion .svc-art .draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+html.motion .svc.in .svc-art .draw { stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s var(--ease) calc(var(--i, 0) * 90ms + 250ms); }
+.svc:hover .svc-art svg { animation: wiggle 0.5s ease; }
+@keyframes wiggle { 25% { rotate: -8deg; } 75% { rotate: 6deg; } }
+
+/* Band: driven by JS (scroll speeds it up and flips direction) */
+html.motion .band-track { animation: none; will-change: transform; }
+
+@media (max-width: 760px) {
+  .dd-ring, .dd-wave, .dd-tri, .dd-plus { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .doodles { display: none; }
 }

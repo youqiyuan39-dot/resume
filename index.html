@@ -31,6 +31,13 @@
   <main id="main">
     <!-- Hero -->
     <section class="hero container" id="top" aria-labelledby="hero-h">
+      <div class="doodles" aria-hidden="true">
+        <svg class="dd dd-star" style="--l:1%;--t:4%;--z:0.6" viewBox="0 0 24 24"><path d="M12 1 14.6 9.4 23 12 14.6 14.6 12 23 9.4 14.6 1 12 9.4 9.4Z"/></svg>
+        <svg class="dd dd-ring" style="--l:49%;--t:2%;--z:1" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+        <svg class="dd dd-plus" style="--l:56%;--t:78%;--z:1.4" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg>
+        <svg class="dd dd-wave" style="--l:30%;--t:93%;--z:0.8" viewBox="0 0 40 24"><path d="M2 12q6-10 12 0t12 0 12 0"/></svg>
+        <svg class="dd dd-tri" style="--l:95%;--t:-2%;--z:1.2" viewBox="0 0 24 24"><path d="M12 3 22 20H2Z"/></svg>
+      </div>
       <div class="hero-text">
         <h1 id="hero-h"><span class="nw">你好，我是 <span class="hl hl-sky">袁有祺</span>，</span><span class="nw">正在找</span> <span class="hl hl-navy">AI Agent 开发实习</span></h1>
         <p class="hero-tags">人工智能专业大三 · 悠悠 Agent 核心开发者 · 长沙 · 可实习 6 个月</p>
@@ -130,9 +137,9 @@
           <h3>5 件商品，没有人工点击，自己跑完</h3>
           <p>按 GitHub 源码 autonomous_flow_v3 的六阶段串行协调器复现：证据不全的隔离并写明缺什么，发布结果未知就回查、绝不重发，拿到平台回执才算完成。点任一行看它的运行日志。</p>
           <ul class="proof">
-            <li><b>约 60%</b><span>上架效率提升<small>口径待补</small></span></li>
-            <li><b>6</b><span>闭环阶段</span></li>
-            <li><b>980</b><span>仓库测试用例</span></li>
+            <li><b data-count="60" data-prefix="约 " data-suffix="%">约 60%</b><span>上架效率提升<small>口径待补</small></span></li>
+            <li><b data-count="6">6</b><span>闭环阶段</span></li>
+            <li><b data-count="980">980</b><span>仓库测试用例</span></li>
           </ul>
         </div>
         <div class="work-panel panel-navy">
@@ -276,7 +283,7 @@
           <p><b>测试</b>仓库共 980 项 Python 测试用例。2026-10-25 在 Linux 环境实跑：956 项通过，7 项因缺私有原件跳过，17 项报错；抽查的报错来自 Windows 专用的本机加密配置，Linux 下无法保存。</p>
           <p><b>当前状态</b>闭环代码、隔离与回查逻辑已实现并有测试覆盖；真实店铺的无人值守上架仍在验收中，以 GitHub README 为准。</p>
         </div>
-        <div class="status-badge" aria-hidden="true"><b>956</b><span>/ 980 通过</span></div>
+        <div class="status-badge" aria-hidden="true"><b data-count="956">956</b><span>/ 980 通过</span></div>
       </div>
     </section>
 
