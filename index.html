@@ -7,10 +7,10 @@
   <meta name="description" content="袁有祺的个人网站。人工智能专业大三，求职 AI Agent 开发实习；做过在上家公司实际使用的美客多商品上架 Agent「悠悠」。">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="data:,">
-  <link rel="preload" href="fonts/sans-700.woff2?v=17" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="fonts/fonts.css?v=17">
-  <link rel="stylesheet" href="style.css?v=17">
-  <script src="app.js?v=17" defer></script>
+  <link rel="preload" href="fonts/sans-700.woff2?v=18" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css?v=18">
+  <link rel="stylesheet" href="style.css?v=18">
+  <script src="app.js?v=18" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
@@ -21,8 +21,8 @@
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-links"><span class="menu-ic" aria-hidden="true"></span>目录</button>
       <div class="nav-links" id="nav-links">
         <a href="#top">首页</a>
-        <a href="#works">项目</a>
         <a href="#experience">经历</a>
+        <a href="#works">项目</a>
         <a href="#skills">技能</a>
         <a href="#about">关于我</a>
         <a class="nav-pdf" href="assets/yuan-youqi-ai-agent-resume.pdf" download="袁有祺_AI_Agent开发实习.pdf">下载简历</a>
@@ -48,7 +48,7 @@
         <div class="hero-btns">
           <a class="btn btn-navy" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>联系我</a>
           <a class="btn btn-line" href="assets/yuan-youqi-ai-agent-resume.pdf" download="袁有祺_AI_Agent开发实习.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14"/></svg>下载简历</a>
-          <a class="btn btn-line" href="#works">看项目</a>
+          <a class="btn btn-line" href="#experience">看经历与项目</a>
         </div>
       </div>
       <div class="hero-card">
@@ -67,11 +67,37 @@
       </div>
     </div></div>
 
+    <!-- Experience -->
+    <section class="exp" id="experience" aria-labelledby="exp-h">
+      <div class="container exp-in">
+        <div class="exp-head">
+          <h2 id="exp-h">工作 <span class="hl hl-sky">经验</span></h2>
+          <p>一段 AI Agent 开发实习，做的是业务每天要用的工具，不是课程作业。</p>
+          <a class="btn btn-white" href="#works">看这段实习做出的项目</a>
+        </div>
+        <ol class="timeline">
+          <li class="tl">
+            <p class="tl-date">2026.06 – 2026.10</p>
+            <h3>AI Agent 开发工程师（实习）<span>伙麦跨境电商公司</span></h3>
+            <p>负责悠悠的需求分析、流程与模块拆分、提示词与校验规则设计和验收；用 Codex 等 AI 编码工具完成实现。交付两套 Web 审核工作台给运营使用，建立 31 项回归验收用例。参与 TikTok Shop 选品调研与 Listing 优化，熟悉运营怎么判断一件商品能不能上。</p>
+            <a class="tl-link" href="#works">做出的项目：悠悠，美客多商品上架 Agent ↓</a>
+            <span class="tl-ic" style="--c: var(--sky)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></span>
+          </li>
+          <li class="tl">
+            <p class="tl-date">在读 · 预计 2028 年毕业</p>
+            <h3>人工智能专业 本科<span>湖南工商大学</span></h3>
+            <p>专业排名前 5%，英语四级，可读英文 API 文档。可实习 6 个月，每周 5 天。</p>
+            <span class="tl-ic" style="--c: var(--sun)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <!-- Works -->
     <section class="works container" id="works" aria-labelledby="works-h">
       <header class="sec-head">
         <h2 id="works-h">核心 <span class="hl hl-coral">项目</span></h2>
-        <p>悠悠：美客多商品上架 Agent。先看我负责什么，再看模型在哪里做决定、流程怎么防错、真实界面长什么样。</p>
+        <p>这段实习做出的项目：悠悠，美客多商品上架 Agent。先看我负责什么，再看模型在哪里做决定、流程怎么防错、真实界面长什么样。</p>
         <div class="sec-actions">
           <a class="btn btn-navy btn-sm" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>查看源码</a>
         </div>
@@ -252,31 +278,6 @@
       </article>
     </section>
 
-    <!-- Experience -->
-    <section class="exp" id="experience" aria-labelledby="exp-h">
-      <div class="container exp-in">
-        <div class="exp-head">
-          <h2 id="exp-h">工作 <span class="hl hl-sky">经验</span></h2>
-          <p>一段 AI Agent 开发实习，做的是业务每天要用的工具，不是课程作业。</p>
-          <a class="btn btn-white" href="#contact">联系我</a>
-        </div>
-        <ol class="timeline">
-          <li class="tl">
-            <p class="tl-date">2026.06 – 2026.10</p>
-            <h3>AI Agent 开发工程师（实习）<span>伙麦跨境电商公司</span></h3>
-            <p>负责悠悠的需求分析、流程与模块拆分、提示词与校验规则设计和验收；用 Codex 等 AI 编码工具完成实现。交付两套 Web 审核工作台给运营使用，建立 31 项回归验收用例。参与 TikTok Shop 选品调研与 Listing 优化，熟悉运营怎么判断一件商品能不能上。</p>
-            <span class="tl-ic" style="--c: var(--sky)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></span>
-          </li>
-          <li class="tl">
-            <p class="tl-date">在读 · 预计 2028 年毕业</p>
-            <h3>人工智能专业 本科<span>湖南工商大学</span></h3>
-            <p>专业排名前 5%，英语四级，可读英文 API 文档。可实习 6 个月，每周 5 天。</p>
-            <span class="tl-ic" style="--c: var(--sun)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <!-- Services -->
     <section class="services" id="skills" aria-labelledby="svc-h">
       <div class="container">
@@ -379,7 +380,7 @@
         </div>
         <div>
           <h3>快速链接</h3>
-          <a href="#top">首页</a><a href="#works">项目</a><a href="#experience">经历</a><a href="#skills">技能</a><a href="#about">关于我</a>
+          <a href="#top">首页</a><a href="#experience">经历</a><a href="#works">项目</a><a href="#skills">技能</a><a href="#about">关于我</a>
         </div>
         <div>
           <h3>联系方式</h3>

@@ -587,3 +587,8 @@ html.motion .ts.on { opacity: 1; transform: none; }
 }
 #trace-replay { display: none; }
 html.motion #trace-replay { display: inline-flex; }
+
+/* ===== V18: experience first, then the project it produced ===== */
+.works { padding-top: clamp(80px, 13vh, 130px); }
+.tl-link { display: inline-block; margin-top: 14px; padding: 6px 14px; border: 3px solid var(--navy); border-radius: 12px; background: var(--sun); color: var(--navy); font-weight: 800; font-size: 0.92rem; text-decoration: none; box-shadow: 3px 3px 0 var(--navy); transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease); }
+.tl-link:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--navy); }
