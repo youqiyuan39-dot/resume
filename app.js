@@ -1,4 +1,4 @@
-/* V15: V14 + motion layer at the end of this file. */
+/* V16 (V15 motion layer at the end of this file). */
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -309,8 +309,12 @@
   }));
 
   /* Highlights outside the hero wipe in when seen */
-  const hlIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); hlIO.unobserve(e.target); } }), { threshold: 0.8 });
-  $$('.hl').filter((el) => !el.closest('.hero')).forEach((el) => hlIO.observe(el));
+  // Observe the heading, not the clipped highlight itself: a fully clipped element can report zero visible area.
+  const hlIO = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return; hlIO.unobserve(e.target);
+    $$('.hl', e.target).forEach((el, i) => setTimeout(() => el.classList.add('in'), 120 + i * 200));
+  }), { threshold: 0.4 });
+  [...new Set($$('.hl').filter((el) => !el.closest('.hero')).map((el) => el.closest('h1, h2, h3, p') || el.parentElement))].forEach((h) => hlIO.observe(h));
 
   /* Cards and blocks land in, staggered per group */
   const groups = [

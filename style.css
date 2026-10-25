@@ -1,4 +1,5 @@
-/* V15 · V14 + 动态特效（入场、滚动揭示、高亮擦入、图标描线、卡片落位、技术带随滚动加速、头像卡片跟随鼠标倾斜、数字滚动、导航高亮）
+/* V16 · 面试官视角重排：首屏 → 核心项目 → 经历 → 技能 → 关于我 → 联系；删去与 AI Agent 求职无关的内容
+   V15 · V14 + 动态特效（入场、滚动揭示、高亮擦入、图标描线、卡片落位、技术带随滚动加速、头像卡片跟随鼠标倾斜、数字滚动、导航高亮）
    V14 · Paperfolio 思路的新粗野风个人网站
    参考 B 站「伽允啊」教程：找模板（Paperfolio）→ 定配色 → AI 定制 → 换图细修 → 上线
    深海军蓝描边 + 硬投影 + 色块高亮；出港牌、利润门、灯箱交互沿用 V13 */
@@ -458,4 +459,22 @@ html.motion .band-track { animation: none; will-change: transform; }
 }
 @media (prefers-reduced-motion: reduce) {
   .doodles { display: none; }
+}
+
+/* ===== V16 ===== */
+.services { margin-top: 0; padding-top: clamp(80px, 13vh, 130px); }
+.work-wide .work-text { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 28px 48px; align-items: center; }
+.work-wide .proof { grid-column: auto; grid-row: auto; }
+.w1-main { display: flex; flex-direction: column; gap: 14px; }
+.w1-main > p:not(.chip) { color: var(--ink-2); }
+.decisions { list-style: none; padding: 0; margin-top: 6px; display: grid; gap: 14px; counter-reset: d; }
+.decisions li { counter-increment: d; position: relative; padding-left: 48px; color: var(--ink-2); font-size: 0.97rem; }
+.decisions li::before { content: counter(d); position: absolute; left: 0; top: 2px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 10px; background: var(--sun); color: var(--navy); border: 3px solid var(--navy); font: 800 0.9rem/1 var(--mono); box-shadow: 3px 3px 0 var(--navy); }
+.decisions b { display: block; color: var(--ink); font-size: 1.06rem; }
+.proof small { margin-top: 2px; line-height: 1.5; }
+.svc-tools { margin-top: auto !important; padding-top: 14px; font-size: 0.85rem !important; font-weight: 700; color: var(--navy) !important; }
+.svc-more { max-width: 52em; margin: 40px auto 0; text-align: center; color: var(--ink-2); }
+.svc-more b { color: var(--ink); margin-right: 10px; }
+@media (max-width: 900px) {
+  .work-wide .work-text { grid-template-columns: minmax(0, 1fr); }
 }

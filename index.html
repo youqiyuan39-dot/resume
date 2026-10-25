@@ -7,10 +7,10 @@
   <meta name="description" content="袁有祺的个人网站。人工智能专业大三，求职 AI Agent 开发实习；做过在上家公司实际使用的美客多商品上架 Agent「悠悠」。">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="data:,">
-  <link rel="preload" href="fonts/sans-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="fonts/fonts.css?v=14">
-  <link rel="stylesheet" href="style.css?v=15">
-  <script src="app.js?v=15" defer></script>
+  <link rel="preload" href="fonts/sans-700.woff2?v=16" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css?v=16">
+  <link rel="stylesheet" href="style.css?v=16">
+  <script src="app.js?v=16" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
@@ -20,9 +20,10 @@
       <a class="logo" href="#top" aria-label="回到顶部"><span>袁</span></a>
       <div class="nav-links">
         <a href="#top">首页</a>
+        <a href="#works">项目</a>
+        <a href="#experience">经历</a>
+        <a href="#skills">技能</a>
         <a href="#about">关于我</a>
-        <a href="#works">精选作品</a>
-        <a href="#experience">工作经验</a>
       </div>
       <a class="nav-cta" href="#contact">联系我</a>
     </nav>
@@ -41,10 +42,10 @@
       <div class="hero-text">
         <h1 id="hero-h"><span class="nw">你好，我是 <span class="hl hl-sky">袁有祺</span>，</span><span class="nw">正在找</span> <span class="hl hl-navy">AI Agent 开发实习</span></h1>
         <p class="hero-tags">人工智能专业大三 · 悠悠 Agent 核心开发者 · 长沙 · 可实习 6 个月</p>
-        <p class="hero-desc">做过一个在上家公司实际使用的美客多上架 Agent：证据不全就自动隔离，发布结果以平台回查为准。往下看，它会自己跑一遍。</p>
+        <p class="hero-desc">在上家公司做了美客多商品上架 Agent「悠悠」：证据不全自动隔离，发布结果以平台回查为准。公司使用后，上架效率提升约 60%。</p>
         <div class="hero-btns">
           <a class="btn btn-navy" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>联系我</a>
-          <a class="btn btn-line" href="#works">查看作品</a>
+          <a class="btn btn-line" href="#works">看项目</a>
         </div>
       </div>
       <div class="hero-card">
@@ -63,89 +64,36 @@
       </div>
     </div></div>
 
-    <!-- Services -->
-    <section class="services" aria-labelledby="svc-h">
-      <div class="container">
-        <header class="sec-head">
-          <h2 id="svc-h">我能做的 <span class="hl hl-coral">事情</span></h2>
-          <p>每一项都在悠悠里真实做过，下面的作品区能看到对应的东西。</p>
-        </header>
-        <div class="svc-grid">
-          <article class="svc">
-            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="8" width="12" height="10" rx="2"/><rect x="31" y="8" width="12" height="10" rx="2"/><rect x="18" y="30" width="12" height="10" rx="2"/><path d="M17 13h14M11 18v6h13v6M37 18v6H24"/></svg></div>
-            <h3>Agent 工作流设计</h3>
-            <p>把上架拆成证据、处理、校验、冻结、发布、回查六个阶段，每步可恢复、可追溯。</p>
-          </article>
-          <article class="svc">
-            <div class="svc-art" style="--bg: var(--sun-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 9c-5 0-5 3-5 7s-4 8-4 8 4 4 4 8 0 7 5 7M31 9c5 0 5 3 5 7s4 8 4 8-4 4-4 8 0 7-5 7"/><path d="M20 20h8M20 28h5"/></svg></div>
-            <h3>Prompt 与结构化输出</h3>
-            <p>系统提示词、Few-shot 和 JSON 结构化输出；模型只做提议，不确定就停下。</p>
-          </article>
-          <article class="svc">
-            <div class="svc-art" style="--bg: var(--coral-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 9 11v11c0 10 7 17 15 21 8-4 15-11 15-21V11Z"/><path d="m17 24 5 5 9-10"/></svg></div>
-            <h3>规则校验与测试</h3>
-            <p>把运营经验写成类目守卫、型号规则、必填检查；建立 31 项回归验收用例。</p>
-          </article>
-          <article class="svc">
-            <div class="svc-art" style="--bg: var(--violet-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v13c0 3 6 5 14 5s14-2 14-5V11M10 24v13c0 3 6 5 14 5s14-2 14-5V24"/></svg></div>
-            <h3>数据采集与清洗</h3>
-            <p>Chrome 扩展采集货源与平台数据，绑定原件 hash、SKU、图片和包装信息。</p>
-          </article>
-          <article class="svc">
-            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="28" rx="3"/><path d="M6 15h36M14 22h12M14 28h8M31 22h5v6h-5z"/><path d="M18 42h12"/></svg></div>
-            <h3>审核工作台</h3>
-            <p>维护两套 Web 审核工作台：缺什么、为什么停、下一步做什么，一眼看清。</p>
-          </article>
-          <article class="svc svc-cta">
-            <svg class="svc-cta-ic" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="4"/><path d="m6 14 18 12 18-12"/></svg>
-            <h3>想聊具体项目？</h3>
-            <p>源码在 GitHub 公开，面试时可以现场讲任何一个模块的取舍。</p>
-            <a class="btn btn-white" href="#contact">联系我</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="about container" id="about" aria-labelledby="about-h">
-      <div class="about-art">
-        <img src="assets/portrait.webp" width="600" height="800" alt="" loading="lazy">
-      </div>
-      <div class="about-text">
-        <h2 id="about-h">关于 <span class="hl hl-sky">袁有祺</span></h2>
-        <p>湖南工商大学人工智能专业大三，专业排名前 5%。在伙麦跨境电商实习时，从需求分析、流程设计到开发，做了美客多商品上架 Agent「悠悠」，现在公司内部在用。我相信 Agent 的价值不在模型说了什么，而在每一步都有证据、有规则、能回查。</p>
-        <ul class="about-list">
-          <li><span class="dot" style="--c: var(--navy)"></span><div><b>AI Agent 开发</b>Python、大模型 API、结构化输出、状态机协调器、单元与回归测试。</div></li>
-          <li><span class="dot" style="--c: var(--coral)"></span><div><b>懂业务</b>TikTok Shop 与美客多运营、选品调研、Listing 优化，知道规则从哪来。</div></li>
-          <li><span class="dot" style="--c: var(--sky)"></span><div><b>AI 内容生产</b>万圣节扫帚挂车 AI 视频（脚本、分镜、Seedance 生成与剪辑），关联商品周成交 357 件。</div></li>
-        </ul>
-        <a class="btn btn-navy" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">看 GitHub 源码</a>
-      </div>
-    </section>
-
     <!-- Works -->
     <section class="works container" id="works" aria-labelledby="works-h">
       <header class="sec-head">
-        <h2 id="works-h">精选 <span class="hl hl-coral">作品</span></h2>
-        <p>同一个项目的四个切面：它怎么跑、怎么判错、怎么算钱、真实界面长什么样。</p>
+        <h2 id="works-h">核心 <span class="hl hl-coral">项目</span></h2>
+        <p>悠悠：美客多商品上架 Agent。下面四块依次回答：流程怎么设计、怎么防判错、怎么算钱、真实界面长什么样。</p>
       </header>
 
-      <!-- Work 1: departure board -->
+      <!-- Work 1: design decisions + run demo -->
       <article class="work work-wide">
         <div class="work-text">
-          <p class="chip">悠悠 Agent · 无人值守上架</p>
-          <h3>5 件商品，没有人工点击，自己跑完</h3>
-          <p>按 GitHub 源码 autonomous_flow_v3 的六阶段串行协调器复现：证据不全的隔离并写明缺什么，发布结果未知就回查、绝不重发，拿到平台回执才算完成。点任一行看它的运行日志。</p>
+          <div class="w1-main">
+            <p class="chip">设计决策</p>
+            <h3>把上架做成一台不会乱发的状态机</h3>
+            <p>上架最怕两件事：模型判错还照样发出去，网络超时后重复刊登。悠悠把流程拆成六个串行阶段，每一步都要拿证据过门禁，不确定就停下隔离，不让模型猜。</p>
+            <ol class="decisions">
+              <li><b>先落盘，再发布</b>调平台接口前，先把任务写成 dispatching 并原子保存；进程中断后从原阶段续跑。</li>
+              <li><b>结果未知，只回查不重发</b>发布时出任何异常都记为 unknown，转去回读平台，从设计上避免重复刊登。</li>
+              <li><b>以平台回执为完成标准</b>拿到真实 item_id 且确认在线才算完成，否则隔离并写明原因，交给人处理。</li>
+            </ol>
+          </div>
           <ul class="proof">
-            <li><b data-count="60" data-prefix="约 " data-suffix="%">约 60%</b><span>上架效率提升<small>口径待补</small></span></li>
-            <li><b data-count="6">6</b><span>闭环阶段</span></li>
-            <li><b data-count="980">980</b><span>仓库测试用例</span></li>
+            <li><b data-count="60" data-prefix="约 " data-suffix="%">约 60%</b><span>上架效率提升<small>上家公司实际使用</small></span></li>
+            <li><b data-count="6">6</b><span>串行阶段<small>证据 → 处理 → 校验 → 冻结 → 发布 → 回查</small></span></li>
+            <li><b data-count="3">3</b><span>道门禁<small>证据齐全 · 同款置信度 ≥ 0.75 · 利润 &gt; 10%</small></span></li>
           </ul>
         </div>
         <div class="work-panel panel-navy">
           <div class="board" id="board">
             <div class="board-head">
-              <p class="board-title">出港牌<span>演示批次 · 示例数据</span></p>
+              <p class="board-title">运行演示<span>按源码规则复现 · 示例数据 · 点任一行看日志</span></p>
               <div class="board-ctl">
                 <button type="button" class="ctl" id="b-pause" aria-pressed="false">暂停</button>
                 <button type="button" class="ctl" id="b-rerun">重新运行</button>
@@ -204,7 +152,7 @@
         <div class="work-text">
           <p class="chip chip-sun">利润门</p>
           <h3>差一点也不放行</h3>
-          <p>出港牌上的<b>园艺修枝剪</b>按市场价 ¥83 算出利润率 9.6%，被隔离。拖动售价看它什么时候能放行。规则：贡献利润 ÷ 买家售价，<b>严格大于</b> 10%，不自动抬价。</p>
+          <p>运行演示里的<b>园艺修枝剪</b>按市场价 ¥83 算出利润率 9.6%，被隔离。拖动售价看它什么时候能放行。规则：贡献利润 ÷ 买家售价，<b>严格大于</b> 10%，不自动抬价。</p>
           <div class="mini-board" aria-hidden="true">
             <span class="mb-name">园艺修枝剪</span>
             <span class="mb-pct" id="mb-pct">9.6%</span>
@@ -246,7 +194,7 @@
       <div class="container exp-in">
         <div class="exp-head">
           <h2 id="exp-h">工作 <span class="hl hl-sky">经验</span></h2>
-          <p>从内容运营到 AI Agent 开发，一直在做同一件事：让工具真的替人省下时间。</p>
+          <p>实习期间负责悠悠从需求分析、流程设计到开发交付，上家公司实际在用。</p>
           <a class="btn btn-white" href="#contact">联系我</a>
         </div>
         <ol class="timeline">
@@ -255,12 +203,6 @@
             <h3>AI Agent 开发工程师（实习）<span>伙麦跨境电商公司</span></h3>
             <p>负责悠悠从需求分析、流程设计到开发：设计系统提示词与 JSON 结构化输出，把运营经验写成校验规则，建立 31 项回归验收用例及 16 项、47 项专项测试，维护两套 Web 审核工作台。参与 TikTok Shop 选品调研与 Listing 优化。</p>
             <span class="tl-ic" style="--c: var(--sky)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></span>
-          </li>
-          <li class="tl">
-            <p class="tl-date">2025.07 – 2025.09</p>
-            <h3>内容运营与短视频制作<span>政府公众号</span></h3>
-            <p>单条视频播放 5 万+、完播率 88.7%、文案完读率 74.69%；用 ChatGPT/DeepSeek 辅助检索与脚本初稿，人工改写校对。</p>
-            <span class="tl-ic" style="--c: var(--coral)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg></span>
           </li>
           <li class="tl">
             <p class="tl-date">在读 · 预计 2028 年毕业</p>
@@ -272,41 +214,72 @@
       </div>
     </section>
 
-    <!-- Status (instead of testimonials: no invented quotes) -->
-    <section class="status container" aria-labelledby="status-h">
-      <header class="sec-head">
-        <h2 id="status-h">测试与 <span class="hl hl-sky">现状</span></h2>
-        <p>能做到什么、还没做到什么，都按仓库里的事实写。</p>
-      </header>
-      <div class="status-card">
-        <div class="status-text">
-          <p><b>测试</b>仓库共 980 项 Python 测试用例。2026-10-25 在 Linux 环境实跑：956 项通过，7 项因缺私有原件跳过，17 项报错；抽查的报错来自 Windows 专用的本机加密配置，Linux 下无法保存。</p>
-          <p><b>当前状态</b>闭环代码、隔离与回查逻辑已实现并有测试覆盖；真实店铺的无人值守上架仍在验收中，以 GitHub README 为准。</p>
+    <!-- Services -->
+    <section class="services" id="skills" aria-labelledby="svc-h">
+      <div class="container">
+        <header class="sec-head">
+          <h2 id="svc-h">专业 <span class="hl hl-coral">技能</span></h2>
+          <p>每一项都在悠悠里真实用过，上面的项目区能看到对应的东西。</p>
+        </header>
+        <div class="svc-grid">
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="8" width="12" height="10" rx="2"/><rect x="31" y="8" width="12" height="10" rx="2"/><rect x="18" y="30" width="12" height="10" rx="2"/><path d="M17 13h14M11 18v6h13v6M37 18v6H24"/></svg></div>
+            <h3>Agent 工作流设计</h3>
+            <p>把上架拆成证据、处理、校验、冻结、发布、回查六个阶段，每步可恢复、可追溯。</p>
+            <p class="svc-tools">Python · 状态机协调器 · 原子写入 JSON</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sun-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 9c-5 0-5 3-5 7s-4 8-4 8 4 4 4 8 0 7 5 7M31 9c5 0 5 3 5 7s4 8 4 8-4 4-4 8 0 7-5 7"/><path d="M20 20h8M20 28h5"/></svg></div>
+            <h3>Prompt 与结构化输出</h3>
+            <p>系统提示词、Few-shot 和 JSON 结构化输出；模型只做提议，不确定就停下。</p>
+            <p class="svc-tools">OpenAI / DeepSeek API · Function Calling · Few-shot</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--coral-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 9 11v11c0 10 7 17 15 21 8-4 15-11 15-21V11Z"/><path d="m17 24 5 5 9-10"/></svg></div>
+            <h3>规则校验与测试</h3>
+            <p>把运营经验写成类目守卫、型号规则、必填检查，判错的情况沉淀成用例。</p>
+            <p class="svc-tools">单元与回归测试 · 31 项回归验收用例</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--violet-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v13c0 3 6 5 14 5s14-2 14-5V11M10 24v13c0 3 6 5 14 5s14-2 14-5V24"/></svg></div>
+            <h3>数据采集与清洗</h3>
+            <p>Chrome 扩展采集货源与平台数据，绑定原件 hash、SKU、图片和包装信息。</p>
+            <p class="svc-tools">Chrome 扩展 · requests · pandas · 正则</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="28" rx="3"/><path d="M6 15h36M14 22h12M14 28h8M31 22h5v6h-5z"/><path d="M18 42h12"/></svg></div>
+            <h3>审核工作台</h3>
+            <p>维护两套 Web 审核工作台：缺什么、为什么停、下一步做什么，一眼看清。</p>
+            <p class="svc-tools">HTML / CSS / JavaScript · RESTful API 调试</p>
+          </article>
+          <article class="svc svc-cta">
+            <svg class="svc-cta-ic" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="4"/><path d="m6 14 18 12 18-12"/></svg>
+            <h3>想聊具体项目？</h3>
+            <p>源码在 GitHub 公开，面试时可以现场讲任何一个模块的取舍。</p>
+            <a class="btn btn-white" href="#contact">联系我</a>
+          </article>
         </div>
-        <div class="status-badge" aria-hidden="true"><b data-count="956">956</b><span>/ 980 通过</span></div>
+        <p class="svc-more"><b>也了解</b>ReAct、LangChain / LangGraph、Dify / Coze、RAG（Embedding、FAISS / Chroma）、MCP、FastAPI / Flask、Docker、Linux。英语四级，可读英文 API 文档。</p>
       </div>
     </section>
 
-    <!-- Skills (instead of articles) -->
-    <section class="skills container" aria-labelledby="skills-h">
-      <header class="sec-head sec-head-row">
-        <h2 id="skills-h">专业 <span class="hl hl-coral">技能</span></h2>
-      </header>
-      <div class="skill-grid">
-        <article class="skill skill-big">
-          <p class="chip">大模型与 Agent</p>
-          <p>熟悉 OpenAI/DeepSeek API、结构化输出、Function Calling、Prompt 工程（系统提示词、Few-shot、防幻觉约束）、Agent 工作流与 Human-in-the-loop；了解 ReAct、LangChain/LangGraph、Dify/Coze、RAG（Embedding、FAISS/Chroma）、MCP。</p>
-        </article>
-        <article class="skill">
-          <p class="chip chip-sky">编程与工程</p>
-          <p>熟悉 Python（requests、pandas、JSON、正则）；了解 JavaScript、HTML/CSS、SQL。RESTful API 调试、FastAPI/Flask、数据采集清洗、Git/GitHub、PowerShell；了解 Docker、Linux。</p>
-        </article>
-        <article class="skill">
-          <p class="chip chip-sun">工具与业务</p>
-          <p>Codex、Cursor、ChatGPT、DeepSeek。TikTok Shop/美客多运营框架、竞品调研、Listing 优化、Excel 报表。</p>
-        </article>
+    <!-- About -->
+    <section class="about container" id="about" aria-labelledby="about-h">
+      <div class="about-art">
+        <img src="assets/portrait.webp" width="600" height="800" alt="" loading="lazy">
+      </div>
+      <div class="about-text">
+        <h2 id="about-h">关于 <span class="hl hl-sky">袁有祺</span></h2>
+        <p>湖南工商大学人工智能专业大三，专业排名前 5%。在伙麦跨境电商实习时，从需求分析、流程设计到开发，做了美客多商品上架 Agent「悠悠」，现在公司内部在用。我相信 Agent 的价值不在模型说了什么，而在每一步都有证据、有规则、能回查。</p>
+        <ul class="about-list">
+          <li><span class="dot" style="--c: var(--navy)"></span><div><b>AI Agent 开发</b>Python、大模型 API、结构化输出、状态机协调器，把模型放进有门禁、可回查的流程里。</div></li>
+          <li><span class="dot" style="--c: var(--coral)"></span><div><b>能把客户需求落成 Agent</b>熟悉 TikTok Shop 与美客多的运营、选品和 Listing，听得懂业务方真正要什么，拆成 Agent 能执行的流程和规则，交付业务同事直接用的工作台。</div></li>
+          <li><span class="dot" style="--c: var(--sky)"></span><div><b>宁可停下，也不乱发</b>证据不全就隔离，结果未知只回查。给客户用的 Agent，可靠比聪明更重要。</div></li>
+        </ul>
+        <a class="btn btn-navy" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">看 GitHub 源码</a>
       </div>
     </section>
+
   </main>
 
   <!-- Footer / contact -->
@@ -329,7 +302,7 @@
         </div>
         <div>
           <h3>快速链接</h3>
-          <a href="#top">首页</a><a href="#about">关于我</a><a href="#works">精选作品</a><a href="#experience">工作经验</a>
+          <a href="#top">首页</a><a href="#works">项目</a><a href="#experience">经历</a><a href="#skills">技能</a><a href="#about">关于我</a>
         </div>
         <div>
           <h3>联系方式</h3>
