@@ -7,10 +7,10 @@
   <meta name="description" content="袁有祺的个人网站。人工智能专业大三，求职 AI Agent 开发实习；做过在上家公司实际使用的美客多商品上架 Agent「悠悠」。">
   <meta name="color-scheme" content="light">
   <link rel="icon" href="data:,">
-  <link rel="preload" href="fonts/sans-700.woff2?v=16" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="fonts/fonts.css?v=16">
-  <link rel="stylesheet" href="style.css?v=16">
-  <script src="app.js?v=16" defer></script>
+  <link rel="preload" href="fonts/sans-700.woff2?v=17" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css?v=17">
+  <link rel="stylesheet" href="style.css?v=17">
+  <script src="app.js?v=17" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
@@ -18,12 +18,14 @@
   <header class="nav-wrap">
     <nav class="nav" aria-label="主导航">
       <a class="logo" href="#top" aria-label="回到顶部"><span>袁</span></a>
-      <div class="nav-links">
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-links"><span class="menu-ic" aria-hidden="true"></span>目录</button>
+      <div class="nav-links" id="nav-links">
         <a href="#top">首页</a>
         <a href="#works">项目</a>
         <a href="#experience">经历</a>
         <a href="#skills">技能</a>
         <a href="#about">关于我</a>
+        <a class="nav-pdf" href="assets/yuan-youqi-ai-agent-resume.pdf" download="袁有祺_AI_Agent开发实习.pdf">下载简历</a>
       </div>
       <a class="nav-cta" href="#contact">联系我</a>
     </nav>
@@ -42,9 +44,10 @@
       <div class="hero-text">
         <h1 id="hero-h"><span class="nw">你好，我是 <span class="hl hl-sky">袁有祺</span>，</span><span class="nw">正在找</span> <span class="hl hl-navy">AI Agent 开发实习</span></h1>
         <p class="hero-tags">人工智能专业大三 · 悠悠 Agent 核心开发者 · 长沙 · 可实习 6 个月</p>
-        <p class="hero-desc">在上家公司做了美客多商品上架 Agent「悠悠」：证据不全自动隔离，发布结果以平台回查为准。公司使用后，上架效率提升约 60%。</p>
+        <p class="hero-desc">在上家公司负责美客多商品上架 Agent「悠悠」的需求、架构与验收，公司使用后上架效率提升约 60%。</p>
         <div class="hero-btns">
           <a class="btn btn-navy" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>联系我</a>
+          <a class="btn btn-line" href="assets/yuan-youqi-ai-agent-resume.pdf" download="袁有祺_AI_Agent开发实习.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14"/></svg>下载简历</a>
           <a class="btn btn-line" href="#works">看项目</a>
         </div>
       </div>
@@ -68,27 +71,80 @@
     <section class="works container" id="works" aria-labelledby="works-h">
       <header class="sec-head">
         <h2 id="works-h">核心 <span class="hl hl-coral">项目</span></h2>
-        <p>悠悠：美客多商品上架 Agent。下面四块依次回答：流程怎么设计、怎么防判错、怎么算钱、真实界面长什么样。</p>
+        <p>悠悠：美客多商品上架 Agent。先看我负责什么，再看模型在哪里做决定、流程怎么防错、真实界面长什么样。</p>
+        <div class="sec-actions">
+          <a class="btn btn-navy btn-sm" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>查看源码</a>
+        </div>
       </header>
 
-      <!-- Work 1: design decisions + run demo -->
+      <!-- Role: what I did, key modules, verified results -->
+      <div class="role-grid">
+        <article class="role">
+          <h3><span class="role-n">1</span>我的职责</h3>
+          <p>从运营的实际需求出发，定义上架流程和业务规则（类目、型号、品牌、利润口径）；拆分模块、写验收标准；用 Codex 等 AI 编码工具完成实现，负责调试和验收。</p>
+        </article>
+        <article class="role">
+          <h3><span class="role-n">2</span>关键实现</h3>
+          <ul class="src-list">
+            <li><a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/workbench_assistant_worker.py" target="_blank" rel="noopener"><b>工作台助手的受限工具调用</b><code>workbench_assistant_worker.py</code></a></li>
+            <li><a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/autonomous_flow_v3.py" target="_blank" rel="noopener"><b>六阶段发布状态机</b><code>autonomous_flow_v3.py</code></a></li>
+            <li><a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/market_follow_v3.py" target="_blank" rel="noopener"><b>利润门禁</b><code>market_follow_v3.py</code></a></li>
+          </ul>
+        </article>
+        <article class="role role-hl">
+          <h3><span class="role-n">3</span>已验证结果</h3>
+          <p>在上家公司的日常上架中实际使用（人工审核把关），上架效率提升约 60%；链锯类目误判修复后，同类误判不再出现。</p>
+          <p class="role-scope">验收范围：真实店铺的全自动发布单独验收，未计入以上结果。</p>
+        </article>
+      </div>
+
+      <!-- Work 1: one complete tool-calling run -->
+      <article class="work work-trace" id="trace">
+        <div class="work-text">
+          <p class="chip">Agent 工具调用</p>
+          <h3>模型到底在哪里做决定？</h3>
+          <p>运营在工作台关联一件商品后问助手：“这件商品为什么不能发布？”下面是这一问在代码里的完整路径。黄色步骤由模型决定，蓝色步骤由代码强制约束。</p>
+          <ul class="legend" aria-label="图例">
+            <li><span class="tag tag-model">模型决定</span>选哪个工具、怎么解释、提出什么修改</li>
+            <li><span class="tag tag-code">代码约束</span>绑定商品、预取证据、校验回答、限制写入</li>
+          </ul>
+          <p class="trace-limit">上限：ReAct 最多 7 轮，工具调用最多 8 次；查询失败返回“本次未取得，不可推测”。</p>
+          <a class="src-link" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/workbench_assistant_worker.py" target="_blank" rel="noopener">源码：src/workbench_assistant_worker.py（AgentScope ReAct）</a>
+        </div>
+        <div class="work-panel panel-navy">
+          <div class="trace">
+            <div class="trace-head">
+              <p class="trace-q"><span>运营</span>这件商品为什么不能发布？</p>
+              <button type="button" class="ctl" id="trace-replay">重放</button>
+            </div>
+            <ol class="trace-steps" id="trace-steps">
+              <li class="ts ts-code"><span class="tag tag-code">代码</span><div><b>绑定当前商品</b><p>本轮只回答已关联的这一件；工具参数里的商品名被强制为当前商品，换成别的商品直接报错。</p><code>context.product = "节日门帘-draft.json"</code></div></li>
+              <li class="ts ts-code"><span class="tag tag-code">代码</span><div><b>预取证据</b><p>推理前先查商品状态和最近处理日志，作为模型的上下文。</p><code>inspect_product · get_product_logs</code></div></li>
+              <li class="ts ts-model"><span class="tag tag-model">模型</span><div><b>选择下一步查询</b><p>首轮必须先调用读取工具，具体调哪个由模型决定：它要看完整缺项。</p><code>inspect_product(detail_level="full")</code></div></li>
+              <li class="ts ts-model"><span class="tag tag-model">模型</span><div><b>根据工具结果解释缺项</b><p>“缺包装重量和三边尺寸，条码豁免依据未取得，所以还不能发布。”</p></div></li>
+              <li class="ts ts-code"><span class="tag tag-code">代码</span><div><b>校验回答</b><p>回答漏掉条码、重量、尺寸等关键缺项，或把内部工具名写进回答时，程序改为直接列出核对记录。</p><code>checked_product_answer()</code></div></li>
+              <li class="ts ts-model"><span class="tag tag-model">模型</span><div><b>提出修改预览</b><p>运营补充实测重量后，模型调用写工具准备修改。</p><code>prepare_product_change({"packed_weight_g": 420})</code></div></li>
+              <li class="ts ts-code"><span class="tag tag-code">代码</span><div><b>校验执行条件</b><p>写工具只生成待确认预览：字段限白名单，每轮只能有一个预览；运营确认后才写入，发布走独立的发布中心。</p></div></li>
+            </ol>
+            <p class="trace-note">按源码流程整理的示例回放，商品与数值为示例，不是录屏。</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Work 2: design decisions + run demo -->
       <article class="work work-wide">
         <div class="work-text">
           <div class="w1-main">
-            <p class="chip">设计决策</p>
+            <p class="chip">流程设计</p>
             <h3>把上架做成一台不会乱发的状态机</h3>
-            <p>上架最怕两件事：模型判错还照样发出去，网络超时后重复刊登。悠悠把流程拆成六个串行阶段，每一步都要拿证据过门禁，不确定就停下隔离，不让模型猜。</p>
-            <ol class="decisions">
-              <li><b>先落盘，再发布</b>调平台接口前，先把任务写成 dispatching 并原子保存；进程中断后从原阶段续跑。</li>
-              <li><b>结果未知，只回查不重发</b>发布时出任何异常都记为 unknown，转去回读平台，从设计上避免重复刊登。</li>
-              <li><b>以平台回执为完成标准</b>拿到真实 item_id 且确认在线才算完成，否则隔离并写明原因，交给人处理。</li>
-            </ol>
+            <p>上架最怕两件事：模型判错还照样发出去，网络超时后重复刊登。悠悠把流程拆成证据、处理、校验、冻结、发布、回查六个串行阶段，任何一步不确定就停下隔离。</p>
+            <a class="src-link" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/autonomous_flow_v3.py" target="_blank" rel="noopener">源码：src/autonomous_flow_v3.py</a>
           </div>
-          <ul class="proof">
-            <li><b data-count="60" data-prefix="约 " data-suffix="%">约 60%</b><span>上架效率提升<small>上家公司实际使用</small></span></li>
-            <li><b data-count="6">6</b><span>串行阶段<small>证据 → 处理 → 校验 → 冻结 → 发布 → 回查</small></span></li>
-            <li><b data-count="3">3</b><span>道门禁<small>证据齐全 · 同款置信度 ≥ 0.75 · 利润 &gt; 10%</small></span></li>
-          </ul>
+          <ol class="decisions">
+            <li><b>先落盘，再发布</b>调平台接口前，先把任务写成 dispatching 并原子保存；进程中断后从原阶段续跑。</li>
+            <li><b>结果未知，只回查不重发</b>发布时出任何异常都记为 unknown，转去回读平台，从设计上避免重复刊登。</li>
+            <li><b>以平台回执为完成标准</b>拿到真实 item_id 且确认在线才算完成，否则隔离并写明原因，交给人处理。</li>
+          </ol>
         </div>
         <div class="work-panel panel-navy">
           <div class="board" id="board">
@@ -112,42 +168,38 @@
               <p class="verdict" id="verdict" aria-live="polite"></p>
             </div>
           </div>
-          <ol class="stages" aria-label="六个阶段与源码规则">
-            <li><b>证据</b><code>EVIDENCE_MISSING</code><span>缺一项就隔离，不让模型猜</span></li>
-            <li><b>处理</b><code>max_attempts = 3</code><span>限流、超时按退避重试</span></li>
-            <li><b>校验</b><code>confidence ≥ 0.75</code><span>利润严格大于 10%</span></li>
-            <li><b>冻结</b><code>sha256(draft, source, target)</code><span>同一草稿不会生成两份</span></li>
-            <li><b>发布</b><code>outcome = unknown</code><span>先落盘，出错只回查不重发</span></li>
-            <li><b>回查</b><code>LIVE_RECEIPT_MISSING</code><span>拿到 item_id 且在线才完成</span></li>
-          </ol>
         </div>
       </article>
 
-      <!-- Work 2: chainsaw case -->
+      <!-- Work 3: chainsaw case -->
       <article class="work">
         <div class="work-text">
           <p class="chip chip-sky">类目守卫</p>
           <h3>链锯被判成锯片配件之后</h3>
-          <p>模型把手持链锯归成了锯片配件。V6 修正为手锯并补上型号规则，后来把“类目与商品类型冲突”的检查做成独立的类目守卫模块，同类误判不再出现。悬停或点击截图上的数字看说明。</p>
+          <p>模型把手持链锯归成了锯片配件。V6 修正为手锯并补上型号规则，后来把“类目与商品类型冲突”的检查做成独立的类目守卫模块。悬停或点击截图上的数字看说明。</p>
           <ol class="notes">
             <li id="note-1"><b>必填检查</b>必填属性 7/7 齐全才放行，缺一项就停在待补信息。</li>
             <li id="note-2"><b>类目路径</b>纠正后：工具 &gt; 手工具 &gt; 锯。</li>
             <li id="note-3"><b>型号规则</b>型号只用有来源的厂家信息，不能把规格数字当型号。</li>
           </ol>
+          <a class="src-link" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/category_guard_v3.py" target="_blank" rel="noopener">源码：src/category_guard_v3.py</a>
         </div>
         <div class="work-panel panel-sky">
-          <div class="shot-wrap">
-            <button type="button" class="shot-btn" data-lightbox="assets/workbench-model-rule.png" data-w="1879" data-h="921" aria-label="放大查看：链锯案例修复后的工作台">
-              <img src="assets/workbench-model-rule.png" width="1879" height="921" loading="lazy" alt="工作台截图：手锯商品的类目路径、型号与必填属性">
-            </button>
-            <button type="button" class="pin" style="--x:18.9%;--y:43.9%" aria-describedby="note-1">1</button>
-            <button type="button" class="pin" style="--x:35.4%;--y:38.7%" aria-describedby="note-2">2</button>
-            <button type="button" class="pin" style="--x:51.4%;--y:56.3%" aria-describedby="note-3">3</button>
-          </div>
+          <figure class="shot">
+            <div class="shot-wrap">
+              <button type="button" class="shot-btn" data-lightbox="assets/workbench-model-rule.png" data-w="1879" data-h="921" aria-label="放大查看完整截图：链锯案例修复后的工作台">
+                <img src="assets/crop-chainsaw.jpg" width="1540" height="610" loading="lazy" alt="工作台截图局部：手锯商品的类目路径、必填 7/7 与型号字段">
+              </button>
+              <button type="button" class="pin" style="--x:5.5%;--y:66.2%" aria-describedby="note-1">1</button>
+              <button type="button" class="pin" style="--x:25.7%;--y:58.4%" aria-describedby="note-2">2</button>
+              <button type="button" class="pin" style="--x:45.2%;--y:84.9%" aria-describedby="note-3">3</button>
+            </div>
+            <figcaption class="shot-cap"><b>类目改为“工具 &gt; 手工具 &gt; 锯”，必填 7/7 才放行</b>点击看完整截图</figcaption>
+          </figure>
         </div>
       </article>
 
-      <!-- Work 3: profit gate -->
+      <!-- Work 4: profit gate -->
       <article class="work" id="gate">
         <div class="work-text">
           <p class="chip chip-sun">利润门</p>
@@ -161,30 +213,41 @@
           <label class="gate-slider" for="g-price">市场售价 <output id="g-price-out" for="g-price">¥ 83</output></label>
           <input type="range" id="g-price" min="70" max="120" step="1" value="83">
           <p class="gate-result" id="g-result" aria-live="polite"></p>
+          <a class="src-link" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/market_follow_v3.py" target="_blank" rel="noopener">源码：src/market_follow_v3.py · config/autopricing_policy.json</a>
         </div>
         <div class="work-panel panel-sun">
           <dl class="ledger" id="g-table"></dl>
-          <p class="gate-note">公式来自源码 market_follow_v3.py：广告、税费各按净回款 5%，退货按变动成本 3%，包材 ¥0.6。平台费、采购、运费是示例值，统一按人民币算；真实系统按美元售价和汇率换算。</p>
+          <p class="gate-note">广告、税费各按净回款 5%，退货按变动成本 3%，包材 ¥0.6，来自源码；平台费、采购、运费是示例值，统一按人民币算；真实系统按美元售价和汇率换算。</p>
         </div>
       </article>
 
-      <!-- Work 4: real screens -->
+      <!-- Work 5: real screens, one conclusion each -->
       <article class="work work-gallery">
         <div class="work-text">
           <p class="chip chip-coral">真实界面</p>
-          <h3>工作台真实截图，不是示意图</h3>
-          <p>核查 Agent 按工具反馈逐轮读取 SKU、包装、图片来源和官方类目，到上限就停下标明未完成；定价只写入本机，未确认同款不据此降价；队列里失败和缺资料的商品各自写明原因，其余照常处理。店铺编号已打码。</p>
+          <h3>每张截图证明一件事</h3>
+          <p>下面是工作台真实截图的局部，点击可看完整截图。店铺编号已打码。</p>
+          <a class="src-link" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent/blob/main/src/product_audit_agent.py" target="_blank" rel="noopener">核查 Agent 源码：src/product_audit_agent.py</a>
         </div>
         <div class="work-panel panel-violet gallery">
-          <button type="button" class="shot-btn g-tall" data-lightbox="assets/agent-loop.jpg" data-w="840" data-h="862" aria-label="放大查看：自主核查商品资料">
-            <img src="assets/agent-loop.jpg" width="840" height="862" loading="lazy" alt="工作台截图：自主核查商品资料，模型按工具反馈逐轮读取 SKU、包装、图片来源和官方类目">
-          </button>
-          <button type="button" class="shot-btn" data-lightbox="assets/pricing.jpg" data-w="1378" data-h="772" aria-label="放大查看：自主定价">
-            <img src="assets/pricing.jpg" width="1378" height="772" loading="lazy" alt="工作台截图：自主定价，按 SKU 成本、货代计费和市场报价生成净回款方案">
-          </button>
-          <button type="button" class="shot-btn" data-lightbox="assets/queue.jpg" data-w="1650" data-h="830" aria-label="放大查看：商品处理队列">
-            <img src="assets/queue.jpg" width="1650" height="830" loading="lazy" alt="工作台截图：商品处理队列，AI 失败和缺资料的商品各自标明原因与下一步">
-          </button>
+          <figure class="shot" style="--mw: 840px">
+            <button type="button" class="shot-btn" data-lightbox="assets/agent-loop.jpg" data-w="840" data-h="862" aria-label="放大查看完整截图：自主核查商品资料">
+              <img src="assets/crop-agent-loop.jpg" width="840" height="530" loading="lazy" alt="工作台截图局部：自主核查商品资料，逐轮读取 SKU 与包装依据，达到轮次上限后标为核查未完成">
+            </button>
+            <figcaption class="shot-cap"><b>模型按工具反馈逐轮取证 → 到上限就停下，标“核查未完成”</b>不改原稿，不猜包装规格</figcaption>
+          </figure>
+          <figure class="shot shot-wide">
+            <button type="button" class="shot-btn" data-lightbox="assets/pricing.jpg" data-w="1378" data-h="772" aria-label="放大查看完整截图：自主定价">
+              <img src="assets/crop-pricing.jpg" width="1378" height="292" loading="lazy" alt="工作台截图局部：定价只写入本机；仅有相近标题候选、未确认同款，不据此自动降价">
+            </button>
+            <figcaption class="shot-cap"><b>只找到相近标题、未确认同款 → 不据此自动调价</b>定价结果只写入本机，未发布</figcaption>
+          </figure>
+          <figure class="shot">
+            <button type="button" class="shot-btn" data-lightbox="assets/queue.jpg" data-w="1650" data-h="830" aria-label="放大查看完整截图：商品处理队列">
+              <img src="assets/crop-queue.jpg" width="1230" height="530" loading="lazy" alt="工作台截图局部：商品处理队列，包装尺寸待确认、缺售价与成本字段的商品标为缺资料并写明下一步">
+            </button>
+            <figcaption class="shot-cap"><b>包装待确认、缺售价与成本字段 → 标为缺资料并写明下一步</b>其余商品照常处理</figcaption>
+          </figure>
         </div>
       </article>
     </section>
@@ -194,14 +257,14 @@
       <div class="container exp-in">
         <div class="exp-head">
           <h2 id="exp-h">工作 <span class="hl hl-sky">经验</span></h2>
-          <p>实习期间负责悠悠从需求分析、流程设计到开发交付，上家公司实际在用。</p>
+          <p>一段 AI Agent 开发实习，做的是业务每天要用的工具，不是课程作业。</p>
           <a class="btn btn-white" href="#contact">联系我</a>
         </div>
         <ol class="timeline">
           <li class="tl">
             <p class="tl-date">2026.06 – 2026.10</p>
             <h3>AI Agent 开发工程师（实习）<span>伙麦跨境电商公司</span></h3>
-            <p>负责悠悠从需求分析、流程设计到开发：设计系统提示词与 JSON 结构化输出，把运营经验写成校验规则，建立 31 项回归验收用例及 16 项、47 项专项测试，维护两套 Web 审核工作台。参与 TikTok Shop 选品调研与 Listing 优化。</p>
+            <p>负责悠悠的需求分析、流程与模块拆分、提示词与校验规则设计和验收；用 Codex 等 AI 编码工具完成实现。交付两套 Web 审核工作台给运营使用，建立 31 项回归验收用例。参与 TikTok Shop 选品调研与 Listing 优化，熟悉运营怎么判断一件商品能不能上。</p>
             <span class="tl-ic" style="--c: var(--sky)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></span>
           </li>
           <li class="tl">
@@ -225,41 +288,55 @@
           <article class="svc">
             <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="8" width="12" height="10" rx="2"/><rect x="31" y="8" width="12" height="10" rx="2"/><rect x="18" y="30" width="12" height="10" rx="2"/><path d="M17 13h14M11 18v6h13v6M37 18v6H24"/></svg></div>
             <h3>Agent 工作流设计</h3>
-            <p>把上架拆成证据、处理、校验、冻结、发布、回查六个阶段，每步可恢复、可追溯。</p>
-            <p class="svc-tools">Python · 状态机协调器 · 原子写入 JSON</p>
+            <p>能把一个业务流程拆成可恢复的阶段和状态，失败时知道停在哪、从哪续跑。</p>
+            <p class="svc-impl"><span>对应实现</span>六阶段发布状态机</p>
+            <p class="svc-tools">Python · 状态机 · 原子写入 JSON</p>
           </article>
           <article class="svc">
             <div class="svc-art" style="--bg: var(--sun-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 9c-5 0-5 3-5 7s-4 8-4 8 4 4 4 8 0 7 5 7M31 9c5 0 5 3 5 7s4 8 4 8-4 4-4 8 0 7-5 7"/><path d="M20 20h8M20 28h5"/></svg></div>
-            <h3>Prompt 与结构化输出</h3>
-            <p>系统提示词、Few-shot 和 JSON 结构化输出；模型只做提议，不确定就停下。</p>
-            <p class="svc-tools">OpenAI / DeepSeek API · Function Calling · Few-shot</p>
+            <h3>工具调用与 Prompt</h3>
+            <p>设计工具描述、参数约束和系统提示词，让模型在限定工具里选下一步。</p>
+            <p class="svc-impl"><span>对应实现</span>工作台助手、核查 Agent</p>
+            <p class="svc-tools">AgentScope ReAct · Function Calling · JSON 结构化输出</p>
           </article>
           <article class="svc">
             <div class="svc-art" style="--bg: var(--coral-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 9 11v11c0 10 7 17 15 21 8-4 15-11 15-21V11Z"/><path d="m17 24 5 5 9-10"/></svg></div>
-            <h3>规则校验与测试</h3>
-            <p>把运营经验写成类目守卫、型号规则、必填检查，判错的情况沉淀成用例。</p>
-            <p class="svc-tools">单元与回归测试 · 31 项回归验收用例</p>
+            <h3>规则校验</h3>
+            <p>把运营经验写成可执行的检查，模型说了不算，规则说了算。</p>
+            <p class="svc-impl"><span>对应实现</span>类目守卫、利润门禁</p>
+            <p class="svc-tools">型号规则 · 必填检查 · 回归验收用例</p>
           </article>
           <article class="svc">
-            <div class="svc-art" style="--bg: var(--violet-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v13c0 3 6 5 14 5s14-2 14-5V11M10 24v13c0 3 6 5 14 5s14-2 14-5V24"/></svg></div>
+            <div class="svc-art" style="--bg: var(--violet-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="m30 30 10 10M15 21h12M21 15v12"/></svg></div>
+            <h3>知识检索（RAG）</h3>
+            <p>项目规则按来源和有效期过滤，关键词与中文向量混合检索后再给模型。</p>
+            <p class="svc-impl"><span>对应实现</span>项目知识库</p>
+            <p class="svc-tools">BM25 · BGE 中文向量 · RRF 融合 · 本地 Qwen</p>
+          </article>
+          <article class="svc">
+            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v13c0 3 6 5 14 5s14-2 14-5V11M10 24v13c0 3 6 5 14 5s14-2 14-5V24"/></svg></div>
             <h3>数据采集与清洗</h3>
-            <p>Chrome 扩展采集货源与平台数据，绑定原件 hash、SKU、图片和包装信息。</p>
-            <p class="svc-tools">Chrome 扩展 · requests · pandas · 正则</p>
+            <p>从浏览器采集货源与平台数据，按 SKU 绑定原件、图片和包装信息。</p>
+            <p class="svc-impl"><span>对应实现</span>Chrome 采集扩展、本地接收端</p>
+            <p class="svc-tools">JavaScript · requests · pandas · 正则</p>
           </article>
           <article class="svc">
-            <div class="svc-art" style="--bg: var(--sky-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="28" rx="3"/><path d="M6 15h36M14 22h12M14 28h8M31 22h5v6h-5z"/><path d="M18 42h12"/></svg></div>
+            <div class="svc-art" style="--bg: var(--sun-soft)"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="28" rx="3"/><path d="M6 15h36M14 22h12M14 28h8M31 22h5v6h-5z"/><path d="M18 42h12"/></svg></div>
             <h3>审核工作台</h3>
-            <p>维护两套 Web 审核工作台：缺什么、为什么停、下一步做什么，一眼看清。</p>
-            <p class="svc-tools">HTML / CSS / JavaScript · RESTful API 调试</p>
-          </article>
-          <article class="svc svc-cta">
-            <svg class="svc-cta-ic" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="4"/><path d="m6 14 18 12 18-12"/></svg>
-            <h3>想聊具体项目？</h3>
-            <p>源码在 GitHub 公开，面试时可以现场讲任何一个模块的取舍。</p>
-            <a class="btn btn-white" href="#contact">联系我</a>
+            <p>给运营用的界面：缺什么、为什么停、下一步做什么，一眼看清。</p>
+            <p class="svc-impl"><span>对应实现</span>两套 Web 审核工作台</p>
+            <p class="svc-tools">HTML / CSS / JavaScript · RESTful API</p>
           </article>
         </div>
-        <p class="svc-more"><b>也了解</b>ReAct、LangChain / LangGraph、Dify / Coze、RAG（Embedding、FAISS / Chroma）、MCP、FastAPI / Flask、Docker、Linux。英语四级，可读英文 API 文档。</p>
+        <div class="talk">
+          <h3>面试时可以现场讲的三件事</h3>
+          <ol>
+            <li>发布超时为什么不能直接重试，结果未知怎么处理</li>
+            <li>利润按买家售价怎么算，成本未知为什么不能当零</li>
+            <li>哪些交给模型、哪些必须由代码兜底</li>
+          </ol>
+        </div>
+        <p class="svc-more"><b>也了解</b>LangChain / LangGraph、Dify / Coze、FAISS / Chroma、MCP、FastAPI / Flask、Docker、Linux。英语四级，可读英文 API 文档。</p>
       </div>
     </section>
 
@@ -270,13 +347,13 @@
       </div>
       <div class="about-text">
         <h2 id="about-h">关于 <span class="hl hl-sky">袁有祺</span></h2>
-        <p>湖南工商大学人工智能专业大三，专业排名前 5%。在伙麦跨境电商实习时，从需求分析、流程设计到开发，做了美客多商品上架 Agent「悠悠」，现在公司内部在用。我相信 Agent 的价值不在模型说了什么，而在每一步都有证据、有规则、能回查。</p>
+        <p>湖南工商大学人工智能专业大三，专业排名前 5%。我做 Agent 的习惯是先跟业务方把流程讲清楚，再决定哪一步交给模型、哪一步必须由代码兜底。</p>
         <ul class="about-list">
-          <li><span class="dot" style="--c: var(--navy)"></span><div><b>AI Agent 开发</b>Python、大模型 API、结构化输出、状态机协调器，把模型放进有门禁、可回查的流程里。</div></li>
-          <li><span class="dot" style="--c: var(--coral)"></span><div><b>能把客户需求落成 Agent</b>熟悉 TikTok Shop 与美客多的运营、选品和 Listing，听得懂业务方真正要什么，拆成 Agent 能执行的流程和规则，交付业务同事直接用的工作台。</div></li>
-          <li><span class="dot" style="--c: var(--sky)"></span><div><b>宁可停下，也不乱发</b>证据不全就隔离，结果未知只回查。给客户用的 Agent，可靠比聪明更重要。</div></li>
+          <li><span class="dot" style="--c: var(--navy)"></span><div><b>先分清模型和代码的边界</b>理解问题、选工具、写候选交给模型；金额计算、字段校验和执行条件交给代码。</div></li>
+          <li><span class="dot" style="--c: var(--coral)"></span><div><b>能把客户需求落成 Agent</b>熟悉 TikTok Shop 与美客多的运营、选品和 Listing，听得懂业务方真正要什么，再拆成 Agent 能执行的流程和规则。</div></li>
+          <li><span class="dot" style="--c: var(--sky)"></span><div><b>可靠比聪明更重要</b>给客户用的 Agent，宁可停下来问人，也不替客户做没把握的决定。</div></li>
         </ul>
-        <a class="btn btn-navy" href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">看 GitHub 源码</a>
+        <a class="btn btn-navy" href="assets/yuan-youqi-ai-agent-resume.pdf" download="袁有祺_AI_Agent开发实习.pdf">下载 PDF 简历</a>
       </div>
     </section>
 
@@ -288,7 +365,7 @@
       <div class="foot-top">
         <div class="foot-me">
           <span class="foot-ava"><img src="assets/portrait.webp" width="600" height="800" alt="" loading="lazy"></span>
-          <div><h2>想聊聊？</h2><p>实习、项目细节、源码里的任何一个取舍都可以。</p></div>
+          <div><h2>想聊聊？</h2><p>实习机会、项目细节，都欢迎直接联系。</p></div>
         </div>
         <div class="foot-cta">
           <a class="btn btn-white" href="tel:+8617773398713">177 7339 8713</a>
@@ -309,6 +386,7 @@
           <a href="tel:+8617773398713">手机 177 7339 8713</a>
           <a href="mailto:2992622682@qq.com">邮箱 2992622682@qq.com</a>
           <a href="https://github.com/youqiyuan39-dot/youyou-mercadolibre-agent" target="_blank" rel="noopener">GitHub youqiyuan39-dot</a>
+          <a href="assets/yuan-youqi-ai-agent-resume.pdf" download="袁有祺_AI_Agent开发实习.pdf">下载 PDF 简历</a>
         </div>
       </div>
       <p class="foot-copy">© 2026 袁有祺 · 版式参考 Paperfolio 模板思路，内容与代码为本人项目</p>

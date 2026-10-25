@@ -1,4 +1,4 @@
-/* V16 (V15 motion layer at the end of this file). */
+/* V17 (motion layer, mobile menu and tool-call replay at the end of this file). */
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -286,7 +286,7 @@
 
   /* Nav: active section + compact after scroll (works in every mode) */
   const navWrap = document.querySelector('.nav-wrap');
-  const links = $$('.nav-links a');
+  const links = $$('.nav-links a[href^="#"]');
   const targets = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const onNav = () => {
     navWrap && navWrap.classList.toggle('is-scrolled', scrollY > 40);
@@ -295,6 +295,16 @@
     links.forEach((a) => a.classList.toggle('is-active', document.querySelector(a.getAttribute('href')) === cur));
   };
   addEventListener('scroll', onNav, { passive: true }); onNav();
+
+  /* Mobile chapter menu */
+  const nav = document.querySelector('.nav'); const menuBtn = document.querySelector('.menu-btn');
+  if (nav && menuBtn) {
+    const setOpen = (open) => { nav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); };
+    menuBtn.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+    $$('.nav-links a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); menuBtn.focus(); } });
+    document.addEventListener('click', (e) => { if (nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false); });
+  }
 
   if (reduce || !('IntersectionObserver' in window)) return;
   const root = document.documentElement;
@@ -318,7 +328,7 @@
 
   /* Cards and blocks land in, staggered per group */
   const groups = [
-    ['.svc-grid', '.svc', true], ['.about', '.about-art, .about-text', false], ['.works', '.work', true],
+    ['.role-grid', '.role', true], ['.svc-grid', '.svc', true], ['.about', '.about-art, .about-text', false], ['.works', '.work', true],
     ['.stages', 'li', false], ['.timeline', '.tl', true], ['.status', '.status-card', true],
     ['.skill-grid', '.skill', true], ['.about-list', 'li', false], ['.foot', '.foot-top, .foot-cols', false],
   ];
@@ -349,6 +359,23 @@
     requestAnimationFrame(tick);
   }), { threshold: 0.6 });
   $$('[data-count]').forEach((el) => cIO.observe(el));
+
+  /* Tool-call replay: steps light up in order, the current one is highlighted */
+  const steps = $$('#trace-steps .ts'); const replay = document.getElementById('trace-replay');
+  if (steps.length) {
+    let timer = 0;
+    const play = () => {
+      clearInterval(timer); steps.forEach((s) => s.classList.remove('on', 'cur')); let i = 0;
+      timer = setInterval(() => {
+        steps.forEach((s) => s.classList.remove('cur'));
+        if (i >= steps.length) { clearInterval(timer); return; }
+        steps[i].classList.add('on', 'cur'); i++;
+      }, 850);
+    };
+    const tIO = new IntersectionObserver((es) => { if (es[0].isIntersecting) { tIO.disconnect(); play(); } }, { threshold: 0.35 });
+    tIO.observe(document.getElementById('trace-steps'));
+    replay && replay.addEventListener('click', play);
+  }
 
   /* Marquee band: base drift, scroll speeds it up and sets direction */
   const track = document.querySelector('.band-track');
