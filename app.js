@@ -1,4 +1,4 @@
-/* V18 (same as V17; motion layer, mobile menu and tool-call replay at the end of this file). */
+/* V19 (motion layer, mobile menu, tool-call replay and knowledge-base search at the end of this file). */
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -420,4 +420,78 @@
     });
     hero.addEventListener('pointerleave', () => { px = 0; py = 0; card.classList.remove('tilting'); if (!raf) raf = requestAnimationFrame(apply); });
   }
+})();
+
+
+/* ===== V19: knowledge-base search (port of the BM25 half of src/project_knowledge_v3.py) ===== */
+(() => {
+  const dataEl = document.getElementById('kb-data'); const aliasEl = document.getElementById('kb-aliases');
+  const input = document.getElementById('kb-q'); const out = document.getElementById('kb-results'); const meta = document.getElementById('kb-meta');
+  if (!dataEl || !aliasEl || !input || !out) return;
+  const all = JSON.parse(dataEl.textContent); const ALIASES = JSON.parse(aliasEl.textContent);
+  const docs = all.filter((d) => ['USER_POLICY', 'PROJECT_CONTRACT', 'OFFICIAL_REFERENCE'].includes(d.authority));
+  const tokens = (text) => {
+    const words = String(text).toLowerCase().match(/[a-z0-9_]+|[\u4e00-\u9fff]+/g) || [];
+    const outT = [];
+    words.forEach((w) => {
+      if (/^[a-z0-9_]+$/.test(w)) { outT.push(w); return; }
+      outT.push(w); const ch = [...w];
+      for (let i = 0; i < ch.length - 1; i++) outT.push(ch[i] + ch[i + 1]);
+    });
+    return outT;
+  };
+  const counter = (arr) => { const m = new Map(); arr.forEach((t) => m.set(t, (m.get(t) || 0) + 1)); return m; };
+  const counts = docs.map((d) => counter(tokens(d.title + ' ' + d.keywords + ' ' + d.content)));
+  const heads = docs.map((d) => new Set(tokens(d.title + ' ' + d.keywords)));
+  const df = new Map(); counts.forEach((c) => c.forEach((_, t) => df.set(t, (df.get(t) || 0) + 1)));
+  const lens = counts.map((c) => [...c.values()].reduce((a, b) => a + b, 0));
+  const avg = lens.reduce((a, b) => a + b, 0) / Math.max(1, counts.length);
+  const N = docs.length;
+  const search = (query, limit = 4, budget = 5000) => {
+    const text = String(query).toLowerCase();
+    const expanded = text + ' ' + Object.entries(ALIASES).filter(([k]) => text.includes(k)).map(([, v]) => v).join(' ');
+    const q = new Set(tokens(expanded));
+    let ranked = [];
+    docs.forEach((d, i) => {
+      let score = 0; const c = counts[i];
+      q.forEach((term) => {
+        const f = c.get(term) || 0;
+        if (f) { const n = df.get(term); score += Math.log(1 + (N - n + 0.5) / (n + 0.5)) * f * 2.2 / (f + 1.2 * (0.25 + 0.75 * lens[i] / Math.max(1, avg))); }
+      });
+      let overlap = 0; q.forEach((term) => { if (heads[i].has(term)) overlap++; });
+      score += 3 * overlap;
+      if (score) ranked.push([score, d]);
+    });
+    ranked.sort((a, b) => (b[0] - a[0]) || (a[1].id < b[1].id ? -1 : 1));
+    if (!ranked.length && ['教程', '使用', '流程'].some((w) => text.includes(w))) ranked = docs.filter((d) => d.id === 'workflow').map((d) => [0, d]);
+    const selected = []; let used = 0;
+    ranked.slice(0, Math.max(1, Math.min(6, limit))).forEach(([score, d]) => {
+      const item = { id: d.id, title: d.title, content: d.content, authority: d.authority, updated_at: d.updated_at, sources: d.sources, score: Math.round(score * 1000) / 1000 };
+      const size = JSON.stringify(item).length;
+      if (used + size > budget) return;
+      selected.push(item); used += size;
+    });
+    return { selected, used, terms: q.size };
+  };
+  const AUTH = { USER_POLICY: ['用户规则', 'auth-user'], PROJECT_CONTRACT: ['项目约定', 'auth-proj'], OFFICIAL_REFERENCE: ['官方参考', ''] };
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
+  const run = () => {
+    const q = input.value.trim(); out.textContent = '';
+    if (!q) { meta.textContent = '输入一个问题试试。'; return; }
+    const t0 = performance.now(); const r = search(q); const ms = (performance.now() - t0).toFixed(1);
+    meta.textContent = `检索 22 条文档 · 查询词 ${r.terms} 个 · 命中 ${r.selected.length} 条 · 注入上下文约 ${r.used} 字符 · ${ms} ms`;
+    if (!r.selected.length) { out.appendChild(el('li', '', '没有相关规则：助手会如实说明“知识库没有相关依据”，不会编造。')); return; }
+    r.selected.forEach((it) => {
+      const li = el('li'); const top = el('div', 'kb-top'); top.append(el('b', '', it.title), el('span', 'kb-score', 'BM25 ' + it.score.toFixed(3)));
+      const tags = el('div', 'kb-tags'); const a = AUTH[it.authority] || [it.authority, ''];
+      tags.append(el('span', a[1], a[0]), el('span', '', '更新 ' + it.updated_at), el('span', '', '来源 ' + (it.sources || []).length + ' 条'));
+      const det = el('details'); det.append(el('summary', '', '看规则原文'), el('p', '', it.content));
+      const src = el('p', 'kb-src', '来源：' + (it.sources || []).join('；')); det.appendChild(src);
+      li.append(top, tags, det); out.appendChild(li);
+    });
+  };
+  document.getElementById('kb-go').addEventListener('click', run);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); run(); } });
+  document.querySelectorAll('.kb-chip').forEach((b) => b.addEventListener('click', () => { input.value = b.textContent; run(); }));
+  run();
 })();
